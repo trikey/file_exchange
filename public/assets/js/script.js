@@ -185,7 +185,7 @@
       });
       return false;
     });
-    return $(document).on('click', '.save_file', function() {
+    $(document).on('click', '.save_file', function() {
       if ($("#file").val() === '') {
         $('#file-errors').show();
         return false;
@@ -196,6 +196,20 @@
       }
       $('#file-errors').hide();
       $('#file_upload_form').submit();
+      return false;
+    });
+    return $('body').on('click', '.update_file', function() {
+      var $this, id;
+      id = $(this).attr('data-id');
+      $("#context-menu-" + id).hide();
+      $this = $(this);
+      $.ajax({
+        url: $this.attr('data-url'),
+        type: 'get'
+      }).done(function(data) {
+        $('#file_add_contaier').html(data);
+        return $('#filesModal').modal('show');
+      });
       return false;
     });
   });

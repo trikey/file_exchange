@@ -42,6 +42,12 @@ class FilesController extends Controller
     {
         return view('files.file_webix_add');
     }
+    public function getModalForUpdate($id)
+    {
+        $class = $this->model;
+        $file = $class::find($id);
+        return view('files.file_webix_update', compact('file'));
+    }
 
     public function multiHandle(Request $request)
     {
@@ -50,32 +56,6 @@ class FilesController extends Controller
             $file = $request->file('file');
             $file->move(public_path().'/uploads/'.sha1(time()).'/', sha1(time().time()).".".$file->getClientOriginalExtension());
         }
-//        $input = Input::all();
-//        $rules = array(
-//            'file' => 'image|max:3000',
-//        );
-
-//        $validation = Validator::make($input, $rules);
-//
-//        if ($validation->fails())
-//        {
-//            return Response::make($validation->errors->first(), 400);
-//        }
-
-
-//        $file = Input::file('file');
-//
-//        $extension = File::extension($file['name']);
-//        $directory = path('public').'uploads/'.sha1(time());
-//        $filename = sha1(time().time()).".{$extension}";
-//
-//        $upload_success = Input::upload('file', $directory, $filename);
-//
-//        if( $upload_success ) {
-//            return Response::json('success', 200);
-//        } else {
-//            return Response::json('error', 400);
-//        }
     }
 
 
@@ -106,9 +86,33 @@ class FilesController extends Controller
     {
         $model = $this->model;
         $data = $request->all();
-        $file = $model::findOrFail($id);
+        $object = $model::findOrFail($id);
         unset($data['name']);
-        $file->update($data);
+        $fileChanged = false;
+        if ($request->hasFile('file'))
+        {
+            if ($request->file('file')->isValid())
+            {
+                $file = $request->file('file');
+                $fileName = sha1(time().time()).".".$file->getClientOriginalExtension();
+                $path = '/uploads/'.sha1(time()).'/';
+                $file->move(public_path().$path, $fileName);
+                $data['path'] = $path . $fileName;
+                $data['name'] = $fileName;
+                $fileChanged = true;
+                $target = public_path(). $object->path;
+                if (file_exists($target)) {
+                    $dirname = dirname($target);
+                    unlink( $target );
+                    rmdir( $dirname );
+                }
+            }
+        }
+        $object->update($data);
+        $file = $object;
+        if ($fileChanged) {
+            return 'Файл обновлен';
+        }
         return view($this->item_view, compact('file'));
 //        return redirect($this->list_page);
     }

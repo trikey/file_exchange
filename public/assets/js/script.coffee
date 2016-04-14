@@ -180,7 +180,18 @@ $ ->
         false
 
 
-    
+    $('body').on 'click', '.update_file', ->
+        id = $(this).attr('data-id')
+        $("#context-menu-#{id}").hide()
+        $this = $(this)
+        $.ajax
+            url: $this.attr('data-url'),
+            type: 'get',
+        .done( (data) ->
+            $('#file_add_contaier').html(data);
+            $('#filesModal').modal('show')
+        )
+        false
 #    $(document).on 'submit', "form#file_upload_form", ->
 #        $('#file_upload_form input[name=folder_id]').val($('#folders').attr('data-parent-id'))
 #        formData = new FormData($(this)[0])
