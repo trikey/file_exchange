@@ -1,0 +1,22 @@
+Options -Indexes 
+ErrorDocument 404 /404.php
+php_value sendmail_from belitskii@gmail.com
+php_value post_max_size 1000M
+php_value upload_max_filesize 1000M
+
+<IfModule mod_php5.c>
+  php_flag session.use_trans_sid off
+</IfModule>
+
+<IfModule mod_dir.c>
+  DirectoryIndex index.php index.html
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive on
+  ExpiresByType image/jpeg "access plus 3 day"
+  ExpiresByType image/gif "access plus 3 day"
+  ExpiresByType image/png "access plus 3 day"
+  ExpiresByType text/css "access plus 3 day"
+  ExpiresByType application/javascript "access plus 3 day"  
+</IfModule>

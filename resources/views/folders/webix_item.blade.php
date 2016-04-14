@@ -1,0 +1,33 @@
+<div class="folder_container">
+    <div class="webix_column webix_first col-lg-3 col-sm-3 col-xs-3 folder_link" data-url="{{ route('admin_folder_view', ['id' => $folder->id]) }}">
+        <div data-href="{{ route('admin_folder_view', ['id' => $folder->id]) }}" id="folder_{{ $folder->id }}" class="webix_cell folder context" data-target="#context-menu-{{ $folder->id }}">
+            <span class="webix_icon webix_fmanager_icon fa-folder"></span>
+            <span class='folder_name'>{{ $folder->name }}</span>
+            <input type="text" name="name" value="{{ $folder->name }}" class="folder_rename_input" style="display: none;" data-method="put" data-id="{{ $folder->id }}" data-url="{{route('admin_folders_update', ['id' => $folder->id ])}}"/>
+        </div>
+    </div>
+    <div class="webix_column col-lg-3 col-sm-3 col-xs-3">
+        <div class="webix_cell">
+            {{ date('d/m/Y H:i', strtotime($folder->updated_at)) }}
+        </div>
+    </div>
+    <div class="webix_column col-lg-3 col-sm-3 col-xs-3">
+        <div class="webix_cell">
+            {{ $folder->type }}
+        </div>
+    </div>
+    <div class="webix_column col-lg-3 col-sm-3 col-xs-3">
+        <div class="webix_cell">
+            &nbsp;
+        </div>
+    </div>
+
+
+</div>
+<div id="context-menu-{{ $folder->id }}">
+    <ul class="dropdown-menu" role="menu">
+        <li><a tabindex="-1" href="#" class="rename_folder" data-id="{{ $folder->id }}">Переименовать</a></li>
+        <li><a tabindex="-1" href="#" class="delete_folder" data-id="{{ $folder->id }}" data-url="{{ route('admin_folders_delete', ['id' => $folder->id]) }}">Удалить</a></li>
+        <li><a tabindex="-1" href="#" class="move_folder" data-id="{{ $folder->id }}">Переместить</a></li>
+    </ul>
+</div>
