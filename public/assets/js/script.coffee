@@ -176,6 +176,7 @@ $ ->
             $('#file-errors').show()
             return false
         $('#file-errors').hide()
+        $('#file_upload_form input[name=folder_id]').val($('#folders').attr('data-parent-id'))
         $('#file_upload_form').submit()
         false
 
