@@ -1,11 +1,11 @@
 @extends('app')
 
 
-@section('meta_title', 'REDMOND - Редактирование пользователя')
+@section('meta_title', trans('users.meta_title_edit'))
 
 @section('content')
 
-<h1>Редактирование пользователя</h1>
+<h1>{{ trans('users.user_edit') }}</h1>
 
 <div class="col-lg-4 col-sm-4 col-xs-4">
 {!! Form::model($user,
@@ -22,7 +22,7 @@
 
 
 <div class="form-group">
-    {!! Form::submit('Сохранить!', array('class' => 'btn btn-primary')) !!}
+    {!! Form::submit(trans('users.save'), array('class' => 'btn btn-primary')) !!}
 </div>
 {!! Form::close() !!}
 

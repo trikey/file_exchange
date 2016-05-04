@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('meta_title', 'REDMOND - Список папок')
+@section('meta_title', trans('folders.meta_title'))
 
 
 @section('content')
@@ -10,13 +10,13 @@
     padding: 0px;
 }
 </style>
-<h1>Файлы и папки</h1>
+<h1>{{ trans('folders.files_and_folders') }}</h1>
 @if(Auth::user()->isAdmin || Auth::user()->isModerator)
 <a href="#" class="btn btn-primary add_folder">
-  <span class="glyphicon glyphicon-plus"></span> Добавить папку
+  <span class="glyphicon glyphicon-plus"></span> {{ trans('folders.add_folder') }}
 </a>
 <a href="#" class="btn btn-primary add_file" data-url="{{ route('admin_files_get_modal') }}">
-  <span class="glyphicon glyphicon-plus"></span> Загрузить файл
+  <span class="glyphicon glyphicon-plus"></span> {{ trans('folders.upload_file') }}
 </a>
 <br/><br/>
 @endif
@@ -30,10 +30,10 @@
                     'method' => 'get'
                     )) !!}
 <div class="form-group">
-    {!! Form::label('Поиск') !!}
+    {!! Form::label(trans('folders.search')) !!}
     {!! Form::text('query', isset($search) ? $search : null, array('placeholder'=>'', 'class' => 'form-control', 'id' => 'search')) !!}
 </div>
-{!! Form::submit('Поиск!', array('class' => 'btn btn-primary')) !!}
+{!! Form::submit(trans('folders.search').'!', array('class' => 'btn btn-primary')) !!}
 {!! Form::close() !!}
 <br/>
 @include('include.breadcrumbs')
@@ -51,10 +51,10 @@
                             <th></th>
                         </tr>
                         <tr>
-                            <td class="webix_first"><div class="webix_hcell">Название</div></td>
-                            <td><div class="webix_hcell">Дата</div></td>
-                            <td><div class="webix_hcell">Тип / Размер</div></td>
-                            <td class="webix_last"><div class="webix_hcell">Ссылка</div></td>
+                            <td class="webix_first"><div class="webix_hcell">{{ trans('folders.name') }}</div></td>
+                            <td><div class="webix_hcell">{{ trans('folders.date') }}</div></td>
+                            <td><div class="webix_hcell">{{ trans('folders.type_size') }}</div></td>
+                            <td class="webix_last"><div class="webix_hcell">{{ trans('folders.link') }}</div></td>
                         </tr>
                     </tbody>
                 </table>
@@ -62,7 +62,7 @@
         </div>
         <div class="webix_ss_body">
             <div class="webix_ss_center col-lg-12 col-sm-12 col-xs-12">
-                <div class="webix_ss_center_scroll col-lg-12 col-sm-12 col-xs-12" id="folders" data-parent-id="{{ $parentFolder }}" data-get-tree-url="{{ route('get_folders_tree') }}" data->
+                <div class="webix_ss_center_scroll col-lg-12 col-sm-12 col-xs-12" id="folders" data-parent-id="{{ $parentFolder }}" data-get-tree-url="{{ route('get_folders_tree') }}">
                     @foreach($folders as $folder)
                        @include('folders.webix_item')
                     @endforeach

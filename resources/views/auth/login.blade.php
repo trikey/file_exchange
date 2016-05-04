@@ -4,7 +4,7 @@
 @section('content')
 
 <div class="col-lg-6 center-block"  style="float: none;">
-<h1>Вход</h1>
+    <h1>{{ trans('login.enter') }}</h1>
     <div class="row">
         <p>{{ trans('login.text_1') }}</p>
         <p>{{ trans('login.text_2') }}</p>

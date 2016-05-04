@@ -9,5 +9,6 @@ return [
     'password' => 'Пароль',
     'remember_me' => 'Запомнить меня',
     'forgot_password' => 'Забыли пароль?',
-    'click_to_the_link_to_recover_password' => 'Перейдите по ссылке, чтобы восстановить пароль:'
+    'click_to_the_link_to_recover_password' => 'Перейдите по ссылке, чтобы восстановить пароль:',
+    'enter' => 'Вход'
 ];

@@ -31,9 +31,9 @@
 </div>
 <div id="context-menu-{{ $file->id }}">
     <ul class="dropdown-menu" role="menu">
-        <li><a tabindex="-1" href="#" class="rename_folder" data-id="{{ $file->id }}">Переименовать</a></li>
-        <li><a tabindex="-1" href="#" class="delete_folder" data-id="{{ $file->id }}" data-url="{{ route('admin_files_delete', ['id' => $file->id]) }}">Удалить</a></li>
-        <li><a tabindex="-1" href="#" class="move_file" data-id="{{ $file->id }}">Переместить</a></li>
-        <li><a tabindex="-1" href="#" class="update_file" data-id="{{ $file->id }}" data-url="{{ route('admin_files_get_modal_update', ['id' => $file->id]) }}">Перезалить</a></li>
+        <li><a tabindex="-1" href="#" class="rename_folder" data-id="{{ $file->id }}">{{ trans('files.rename') }}</a></li>
+        <li><a tabindex="-1" href="#" class="delete_folder" data-id="{{ $file->id }}" data-url="{{ route('admin_files_delete', ['id' => $file->id]) }}">{{ trans('files.delete') }}</a></li>
+        <li><a tabindex="-1" href="#" class="move_file" data-id="{{ $file->id }}">{{ trans('files.move') }}</a></li>
+        <li><a tabindex="-1" href="#" class="update_file" data-id="{{ $file->id }}" data-url="{{ route('admin_files_get_modal_update', ['id' => $file->id]) }}">{{ trans('files.re_upload') }}</a></li>
     </ul>
 </div>

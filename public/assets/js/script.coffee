@@ -1,11 +1,16 @@
 $ ->
+
+    confirm_message = 'Вы уверены?'
+    if($('body').attr('class') == 'lang_en')
+        confirm_message = 'Are you sure?'
+
     $.ajaxSetup
         headers:
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 
     $(".admin_delete").on 'click', ->
         url = $(this).attr("href")
-        if (confirm("Вы уверены?"))
+        if (confirm(confirm_message))
             $.ajax
                 url: url,
                 type: 'post',
@@ -19,7 +24,7 @@ $ ->
 
     $("#folders").on 'click', '.delete_folder',  ->
         url = $(this).attr("data-url")
-        if (confirm("Вы уверены?"))
+        if (confirm(confirm_message))
             $.ajax
                 url: url,
                 type: 'post',

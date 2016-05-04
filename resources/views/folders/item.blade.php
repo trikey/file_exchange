@@ -6,9 +6,9 @@
     </div>
     <div id="context-menu-{{ $folder->id }}">
         <ul class="dropdown-menu" role="menu">
-            <li><a tabindex="-1" href="#" class="rename_folder" data-id="{{ $folder->id }}">Переименовать</a></li>
-            <li><a tabindex="-1" href="#" class="delete_folder" data-id="{{ $folder->id }}" data-url="{{ route('admin_folders_delete', ['id' => $folder->id]) }}">Удалить</a></li>
-            <li><a tabindex="-1" href="#" class="move_folder" data-id="{{ $folder->id }}">Переместить</a></li>
+            <li><a tabindex="-1" href="#" class="rename_folder" data-id="{{ $folder->id }}">{{ trans('folders.rename') }}</a></li>
+            <li><a tabindex="-1" href="#" class="delete_folder" data-id="{{ $folder->id }}" data-url="{{ route('admin_folders_delete', ['id' => $folder->id]) }}">{{ trans('folders.delete') }}</a></li>
+            <li><a tabindex="-1" href="#" class="move_folder" data-id="{{ $folder->id }}">{{ trans('folders.move') }}</a></li>
         </ul>
     </div>
 </div>

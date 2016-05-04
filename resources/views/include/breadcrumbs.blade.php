@@ -1,6 +1,6 @@
 <ol class="breadcrumb">
     {{--<li><a href="/">Главная</a></li>--}}
-    <li><a href="/folders">Главная</a></li>
+    <li><a href="/folders">{{ trans('messages.main') }}</a></li>
     @foreach($breadcrumbs as $breadcrumb)
         @if($breadcrumb == end($breadcrumbs))
             <li class="active">{{ $breadcrumb['name'] }}</li>

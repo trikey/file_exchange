@@ -5,7 +5,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close close_file_upload" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Обновление файла</h4>
+                <h4 class="modal-title">{{ trans('files.file_update') }}</h4>
             </div>
             <div class="modal-body" id="file_upload">
 
@@ -20,18 +20,18 @@
                     )) !!}
 
                     <div class="form-group">
-                        {!! Form::label('Описание') !!}
+                        {!! Form::label(trans('files.description')) !!}
                         {!! Form::textarea('description', null, array('placeholder'=>'', 'class' => 'form-control', 'id' => 'file_name')) !!}
                     </div>
 
 
                     <div class="form-group">
-                        {!! Form::label('Выберите файл') !!}
+                        {!! Form::label(trans('files.select_file')) !!}
                         {!! Form::file('file', array('id' => 'file')) !!}
                     </div>
                     {!! Form::hidden('folder_id', '0') !!}
                     <ul class="text-danger" id="file-errors" style="display: none;">
-                        <li>Название и файл обязательные поля!</li>
+                        <li>{{ trans('files.name_and_file_are_obligatory_fields') }}</li>
                     </ul>
             {!! Form::close() !!}
 
@@ -44,8 +44,8 @@
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-default save_file">Загрузить</button>
-                <button type="button" class="btn btn-default close_file_upload" data-dismiss="modal">Закрыть</button>
+                <button type="button" class="btn btn-default save_file">{{ trans('files.upload') }}</button>
+                <button type="button" class="btn btn-default close_file_upload" data-dismiss="modal">{{ trans('files.close') }}</button>
             </div>
         </div>
 

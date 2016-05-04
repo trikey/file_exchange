@@ -1,11 +1,11 @@
 @extends('app')
 
-@section('meta_title', 'REDMOND - Файлообменник для партнеров')
+@section('meta_title', trans('index.meta_title'))
 
 @section('content')
 
-<h1>Главная</h1>
+<h1>{{ trans('index.main') }}</h1>
 
-<p class="text-info">Благодарим за регистрацию</p>
-<p class="text-info">Напишите нам с указанием вашего email для получения права на просмотр и скачивание материалов</p>
+<p class="text-info">{{ trans('index.thank_you_for_registration') }}</p>
+<p class="text-info">{{ trans('index.write_to_us') }}</p>
 @endsection

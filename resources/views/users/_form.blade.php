@@ -1,10 +1,10 @@
 <div class="form-group">
-    {!! Form::label('Ф.И.О.') !!}
-    {!! Form::text('fio', null, array('placeholder'=>'Иванов Иван Иванович', 'class' => 'form-control')) !!}
+    {!! Form::label(trans('users.fio')) !!}
+    {!! Form::text('fio', null, array('placeholder'=>trans('users.fio_placeholder'), 'class' => 'form-control')) !!}
 </div>
 <div class="form-group">
-    {!! Form::label('Организация') !!}
-    {!! Form::text('organisation', null, array('placeholder'=>'ООО Технопоиск', 'class' => 'form-control')) !!}
+    {!! Form::label(trans('users.organisation')) !!}
+    {!! Form::text('organisation', null, array('placeholder'=> trans('users.organisation_placeholder'), 'class' => 'form-control')) !!}
 </div>
 <div class="form-group">
     {!! Form::label('E-mail') !!}
@@ -13,13 +13,13 @@
 
 
 <div class="form-group">
-    {!! Form::label('Пароль') !!}
+    {!! Form::label(trans('users.password')) !!}
     {!! Form::password('password', array('placeholder'=>'', 'class' => 'form-control')) !!}
 </div>
 
 
 <div class="form-group">
-    {!! Form::label('Подтверждение пароля') !!}
+    {!! Form::label(trans('users.password_confirm')) !!}
     {!! Form::password('password_confirmation', array('placeholder'=>'', 'class' => 'form-control')) !!}
 </div>
 
@@ -28,7 +28,7 @@
     <div class="checkbox">
         <label>
             {!! Form::hidden('isModerator', '0') !!}
-            {!! Form::checkbox('isModerator', 1) !!} <b>Модератор</b>
+            {!! Form::checkbox('isModerator', 1) !!} <b>{{ trans('users.moderator') }}</b>
         </label>
     </div>
 </div>
@@ -37,7 +37,7 @@
     <div class="checkbox">
         <label>
             {!! Form::hidden('isAdmin', '0') !!}
-            {!! Form::checkbox('isAdmin', 1) !!} <b>Администратор</b>
+            {!! Form::checkbox('isAdmin', 1) !!} <b>{{ trans('users.administrator') }}</b>
         </label>
     </div>
 </div>
@@ -48,7 +48,7 @@
     <div class="checkbox">
         <label>
             {!! Form::hidden('canAccess', '0') !!}
-            {!! Form::checkbox('canAccess', 1) !!} <b>Может просматривать контент</b>
+            {!! Form::checkbox('canAccess', 1) !!} <b>{{ trans('users.can_access') }}</b>
         </label>
     </div>
 </div>

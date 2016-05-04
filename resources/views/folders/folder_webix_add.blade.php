@@ -4,7 +4,7 @@
         <div class="webix_column webix_first col-lg-3 col-sm-3 col-xs-3">
             <div class="webix_cell folder context">
                 <span class="webix_icon webix_fmanager_icon fa-folder"></span>
-                <span class='folder_name' style="display: none;">Новая папка</span>
+                <span class='folder_name' style="display: none;">{{ trans('folders.new_folder') }}</span>
                 <input type="text" name="name" value="Новая папка" class="folder_rename_input" data-method="post" data-url="{{route('admin_folders_store')}}"/>
             </div>
         </div>
