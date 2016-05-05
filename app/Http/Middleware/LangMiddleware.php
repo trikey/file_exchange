@@ -16,16 +16,17 @@ class LangMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if(!Session::has('locale'))
-        {
-            Session::put('locale', $request->getPreferredLanguage($this->languages));
-        }
+        Session::put('locale', 'en');
         $lang = Request::input('lang');
         if (in_array($lang, $this->languages))
         {
             Session::put('locale', $lang);
+            Session::put('locale_changed', $lang);
         }
-
+        elseif(Session::has('locale_changed'))
+        {
+            Session::put('locale', Session::get('locale_changed'));
+        }
         app()->setLocale(Session::get('locale'));
 
 //        if(!Session::has('statut'))

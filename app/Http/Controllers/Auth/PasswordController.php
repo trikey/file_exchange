@@ -33,6 +33,7 @@ class PasswordController extends BaseController
     public function __construct()
     {
         $this->subject = trans('messages.forgot_link_subject');
+        $this->middleware('App\Http\Middleware\LangMiddleware');
         $this->middleware('guest');
     }
 }
