@@ -13,6 +13,7 @@ class UsersController extends Controller
 
     public function __construct()
     {
+        $this->middleware('App\Http\Middleware\LangMiddleware');
         $this->middleware('auth'); // только авторизованные пользователи
         $this->middleware('App\Http\Middleware\AdminOrModeratorOnlyMiddleware'); // только администраторы и модераторы
 

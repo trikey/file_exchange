@@ -19,4 +19,13 @@ return [
     'token' => 'This password reset token is invalid.',
     'user' => "We can't find a user with that e-mail address.",
 
+    'reset_title' => 'REDMOND - Password restore',
+    'enter_your_email' => 'Enter your email',
+    'password_recovery' => 'Password restore',
+    'email' => 'E-Mail',
+    'send_link' => 'Send link for password restore',
+
+    'password_title' => 'Password',
+    'password_confirm_title' => 'Confirm Password',
+    'change_password' => 'Change Password'
 ];

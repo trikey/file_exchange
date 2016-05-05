@@ -38,7 +38,7 @@ class Folder extends BaseModel
 
     public function getTypeAttribute()
     {
-        return $this->attributes['type'] = 'Папка';
+        return $this->attributes['type'] = trans('messages.folder');
     }
 
     public function getUrlAttribute()

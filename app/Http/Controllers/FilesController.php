@@ -10,6 +10,7 @@ class FilesController extends Controller
 {
     public function __construct()
     {
+        $this->middleware('App\Http\Middleware\LangMiddleware');
 //        $this->middleware('auth'); // только авторизованные пользователи
 //        $this->middleware('App\Http\Middleware\CanAccessMiddleware'); // только администраторы и модераторы
 
@@ -77,7 +78,7 @@ class FilesController extends Controller
         }
         $file = new $model($data);
         $file->save();
-        return 'Файл загружен';
+        return trans('files.file_uploaded');
 //        return redirect($this->list_page);
     }
 
@@ -111,7 +112,7 @@ class FilesController extends Controller
         $object->update($data);
         $file = $object;
         if ($fileChanged) {
-            return 'Файл обновлен';
+            return trans('files.file_updated');
         }
         return view($this->item_view, compact('file'));
 //        return redirect($this->list_page);

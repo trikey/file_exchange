@@ -10,6 +10,7 @@ class FoldersController extends Controller
 {
     public function __construct()
     {
+        $this->middleware('App\Http\Middleware\LangMiddleware');
         $this->middleware('auth'); // только авторизованные пользователи
         $this->middleware('App\Http\Middleware\CanAccessMiddleware'); // только администраторы и модераторы
 
@@ -55,7 +56,7 @@ class FoldersController extends Controller
             dd("error");
         }
         $arr = $allSubCategories->toArray();
-        array_unshift($arr, ["id" => 0, "text" => "Корень"]);
+        array_unshift($arr, ["id" => 0, "text" => trans('folders.root')]);
         return json_encode($arr);
     }
 
@@ -95,7 +96,7 @@ class FoldersController extends Controller
         $search = $request->get('query');
         $folders = [];
         $parentFolder = 'NULL';
-        $breadcrumbs = [['name' => 'Результаты поиска']];
+        $breadcrumbs = [['name' => trans('folders.search_results')]];
         $folders = $model::FindRootFolders()->get();
         $files = \App\File::FindFilesByFolderId(0)->get();
 
@@ -103,7 +104,7 @@ class FoldersController extends Controller
             $model = $this->model;
             $folders = [];
             $parentFolder = 'NULL';
-            $breadcrumbs = [['name' => 'Результаты поиска']];
+            $breadcrumbs = [['name' => trans('folders.search_results')]];
 
             $files = \App\File::FindFilesByDescription($search)->get();
             $folders = $model::FindFoldersByDescription($search)->get();

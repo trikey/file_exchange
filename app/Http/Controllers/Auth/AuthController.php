@@ -43,6 +43,7 @@ class AuthController extends BaseController
      */
     public function __construct()
     {
+        $this->middleware('App\Http\Middleware\LangMiddleware');
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
     }
 

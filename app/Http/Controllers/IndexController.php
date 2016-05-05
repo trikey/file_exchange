@@ -12,6 +12,7 @@ class IndexController extends Controller
 {
     public function __construct()
     {
+        $this->middleware('App\Http\Middleware\LangMiddleware');
         $this->middleware('auth');
     }
 

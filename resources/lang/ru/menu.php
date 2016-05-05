@@ -7,5 +7,6 @@ return [
     'login' => 'Войти',
     'register' => 'Зарегистрироваться',
     'forgot_password' => 'Забыли пароль?',
-    'logout' => 'Выйти'
+    'logout' => 'Выйти',
+    'select_language' => 'Выбрать Язык'
 ];

@@ -92,8 +92,24 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'email' => [
+            'required' => 'Enter valid e-mail!',
+            'email' => 'Enter valid e-mail!',
+            'unique' => 'This email is already taken!'
+        ],
+        'fio' => [
+            'required' => 'Field Full Name is obligatory!'
+        ],
+        'name' => [
+            'required' => 'Field Name is obligatory!'
+        ],
+        'organisation' => [
+            'required' => 'Field Organization is obligatory!'
+        ],
+        'password' => [
+            'required' => 'Field Password is obligatory!',
+            'min' => 'Password should be not less than :min symbols!',
+            'confirmed' => 'Passwords do not match!',
         ],
     ],
 
