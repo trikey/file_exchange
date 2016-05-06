@@ -80,7 +80,7 @@ class UsersController extends Controller
         {
             $model = $this->model;
             if (Auth::user()->isAdmin) {
-//                $users = $model::FindUsersByName($search)->paginate($this->items_per_page);
+                $users = $model::FindUsersByName($search)->paginate($this->items_per_page);
             }
         }
         return view($this->index_view, compact('users', 'search'));
