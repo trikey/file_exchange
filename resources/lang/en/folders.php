@@ -16,6 +16,8 @@ return [
     'name' => 'Name',
     'date' => 'Date',
     'type_size' => 'Type / Size',
+    'type' => 'Type',
+    'size' => 'Size',
     'link' => 'Link',
     'root' => 'Root',
     'search_results' => 'Search results'

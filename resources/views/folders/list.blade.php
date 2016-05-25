@@ -4,23 +4,26 @@
 
 
 @section('content')
-<style type="text/css">
+<div class="top-line">
+    <div class="row">
+        <div class="col-sm-6">
+            <h1>{{ trans('folders.files_and_folders') }}</h1>
+        </div>
+        <div class="col-sm-6 right-text">
+            @if(Auth::user()->isAdmin || Auth::user()->isModerator)
+            <a href="#" class="btn btn-default add_folder">
+                {{ trans('folders.add_folder') }}
+            </a>
+            <a href="#" class="btn btn-default add_file" data-url="{{ route('admin_files_get_modal') }}">
+                {{ trans('folders.upload_file') }}
+            </a>
+            @endif
+        </div>
+    </div>
+</div>
 
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
-    padding: 0px;
-}
-</style>
-<h1>{{ trans('folders.files_and_folders') }}</h1>
-@if(Auth::user()->isAdmin || Auth::user()->isModerator)
-<a href="#" class="btn btn-primary add_folder">
-  <span class="glyphicon glyphicon-plus"></span> {{ trans('folders.add_folder') }}
-</a>
-<a href="#" class="btn btn-primary add_file" data-url="{{ route('admin_files_get_modal') }}">
-  <span class="glyphicon glyphicon-plus"></span> {{ trans('folders.upload_file') }}
-</a>
-<br/><br/>
-@endif
 
+{{--
 {!! Form::open(
                 array(
                     'class' => 'form-inline',
@@ -36,8 +39,11 @@
 {!! Form::submit(trans('folders.search').'!', array('class' => 'btn btn-primary')) !!}
 {!! Form::close() !!}
 <br/>
+--}}
+
 @include('include.breadcrumbs')
 
+{{--
 <div class="webix_view webix_multiview">
     <div class="webix_view webix_dtable webix_fmanager_table">
         <div class="webix_ss_header">
@@ -71,6 +77,31 @@
                        @include('files.webix_item')
                     @endforeach
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+--}}
+
+<div>
+    <div class="table-files">
+        <div class="table-files-head">
+            <div class="row">
+                <div class="col-xs-6 table-files-col">{{ trans('folders.name') }}</div>
+                <div class="col-xs-2 table-files-col">{{ trans('folders.date') }}</div>
+                <div class="col-xs-2 table-files-col">{{ trans('folders.type_size') }}</div>
+                <div class="col-xs-2 table-files-col">{{ trans('folders.link') }}</div>
+            </div>
+        </div>
+        <div class="table-files-body">
+            <div id="folders" data-parent-id="{{ $parentFolder }}" data-get-tree-url="{{ route('get_folders_tree') }}">
+                @foreach($folders as $folder)
+                    @include('folders.webix_item')
+                @endforeach
+
+                @foreach($files as $file)
+                    @include('files.webix_item')
+                @endforeach
             </div>
         </div>
     </div>

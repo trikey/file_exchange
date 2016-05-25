@@ -1,6 +1,6 @@
  <div class="folder_container" data-url="{{ route('admin_folder_view', ['id' => $folder->id]) }}">
     <div data-href="{{ route('admin_folder_view', ['id' => $folder->id]) }}" id="folder_{{ $folder->id }}" class="btn btn-info btn-lg folder context" data-target="#context-menu-{{ $folder->id }}">
-        <span class="glyphicon glyphicon-folder-close"></span>
+        <span class="icon icon-folder"></span>
         <span class='folder_name'>{{ $folder->name }}</span>
         <input type="text" name="name" value="{{ $folder->name }}" class="folder_rename_input" style="display: none;" data-method="put" data-id="{{ $folder->id }}" data-url="{{route('admin_folders_update', ['id' => $folder->id ])}}"/>
     </div>

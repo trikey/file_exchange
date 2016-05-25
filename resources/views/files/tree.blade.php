@@ -9,8 +9,8 @@
             <div class="modal-body" id="treeFiles">
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default select_category_for_file">{{ trans('files.select') }}</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">{{ trans('files.close') }}</button>
+                <button type="button" class="btn btn-primary select_category_for_file">{{ trans('files.select') }}</button>
             </div>
         </div>
 

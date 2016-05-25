@@ -1,0 +1,102 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600italic,600,700,700italic,800,800italic&subset=latin,cyrillic);
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    background: #f0f0f0;
+    margin-bottom: @footer-height;
+    font-family: 'Open Sans', sans-serif;
+}
+h1 {
+    text-transform: uppercase;
+}
+.top-line {
+    padding-top: 20px;
+    margin-bottom: 20px;
+    h1 {
+        margin-top: 0;
+    }
+}
+.custom-table {
+    th {
+        color: #b0b0b0;
+        font-weight: normal;
+    }
+}
+.file-description {
+    border-radius: 0;
+    resize: none;
+}
+.file-popup {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: none;
+    width: 515px;
+    padding: 20px;
+    background: #ffffff;
+    z-index: 5;
+    color: #787878;
+    font-size: 14px;
+    font-weight: 300;
+    img {
+        max-width: 100%;
+    }
+}
+.row-with-popup {
+    position: relative;
+    &:hover {
+        .file-popup {
+            display: block;
+        }
+    }
+}
+.table-files-row {
+    &:hover {
+        background: fade(#FFFFFF, 50%);
+        cursor: pointer;
+        .icon-folder {
+            .opacity(1);
+        }
+    }
+}
+.popup-file-name {
+    color: #000;
+}
+.node-tree:not(.node-disabled):hover {
+    span.icon.glyphicon {
+        .opacity(1);
+    }
+}
+.node-tree.node-selected {
+    span.icon.glyphicon {
+        .opacity(1);
+    }
+}
+.upload-file {
+    background:  url("@{img-url}bg/upload-file.png") no-repeat;
+    padding-left: 130px;
+    height: 116px;
+    width: 265px;
+    margin: 0 auto;
+    color: fade(#000000, 80%);
+    text-decoration: underline;
+    padding-top: 18px;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+        text-decoration: none;
+    }
+}
+#file {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+}
+.upload-file-name {
+    margin-top: 20px;
+}

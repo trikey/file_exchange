@@ -17,12 +17,13 @@
     <![endif]-->
 
 
-    <link href="{{ asset('/assets/bootstrap/css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('/assets/bootstrap-less/css/bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('/assets/bootstrap-treeview/css/bootstrap-treeview.css') }}" rel="stylesheet">
     <link href="{{ asset('/assets/css/dropzone.css') }}" rel="stylesheet">
     <link href="{{ asset('/assets/css/filemanager.css') }}" rel="stylesheet">
-    <link href="{{ asset('/assets/css/webix.css') }}" rel="stylesheet">
+<!--    <link href="{{ asset('/assets/css/webix.css') }}" rel="stylesheet">-->
     <link href="{{ asset('/assets/css/style.css?345345') }}" rel="stylesheet">
+    <link href="{{ asset('/assets/css/custom-style.css') }}" rel="stylesheet">
 
     <script type="text/javascript" src="{{ asset('/assets/js/jquery/jquery-1.10.1.min.js') }}"></script>
 
@@ -30,12 +31,45 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body class="lang_{{ App::getLocale() }}">
-    <div class="">
-        <div class="col-lg-2 col-sm-2 col-xs-2">
-            @include('include/menu')
+    <div class="header">
+        <div class="container-fluid">
+            <div class="menu-icon visible-xs-inline-block visible-sm-inline-block visible-md-inline-block">
+                <div class="menu-icon-inner"></div>
+            </div>
+            <a href="/" class="logo">
+                <img src="{{ asset('/assets/img/logo.png') }}" alt=""/>
+            </a>
+            <div class="name">
+                Media
+            </div>
+            @include('include/menu2')
         </div>
-        <div class="col-lg-10 col-sm-10 col-xs-10">
-            @yield('content')
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                @yield('content')
+            </div>
+        </div>
+    </div>
+<!--    <div class="container-fluid">-->
+<!--        <div class="row">-->
+<!--            <div class="col-lg-2 col-sm-2">-->
+<!--                @include('include/menu')-->
+<!--            </div>-->
+<!--            <div class="col-lg-10 col-sm-10 col-xs-10">-->
+<!---->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+    <div class="footer">
+        <div class="container-fluid">
+            <a class="logo" href="/">
+                <img src="{{ asset('/assets/img/logo-footer.png') }}" alt=""/>
+            </a>
+            <div class="copyright">
+                © 2016 REDMOND industrial group. All rights reserved.
+            </div>
         </div>
     </div>
     <script type="text/javascript" src="{{ asset('/assets/bootstrap/js/bootstrap.min.js') }}"></script>
@@ -43,6 +77,7 @@
     <script type="text/javascript" src="{{ asset('/assets/js/dropzone.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/bootstrap-contextmenu.js?'.time()) }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/client.js?'.time()) }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/dom.js?'.time()) }}"></script>
     @if(!Auth::guest())
         @if(Auth::user()->isAdmin || Auth::user()->isModerator)
             <script type="text/javascript" src="{{ asset('/assets/js/jquery.form.js') }}"></script>

@@ -9,8 +9,8 @@
             <div class="modal-body" id="tree">
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default select_category">{{ trans('folders.select') }}</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">{{ trans('folders.close') }}</button>
+                <button type="button" class="btn btn-primary select_category">{{ trans('folders.select') }}</button>
             </div>
         </div>
 

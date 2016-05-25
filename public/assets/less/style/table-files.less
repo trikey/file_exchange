@@ -1,0 +1,52 @@
+.table-files-head {
+    border-top: 1px solid #c5c5c5;
+    border-bottom: 1px solid #e3e3e3;
+    color: #b0b0b0;
+}
+.table-files-col {
+    padding: 10px 15px;
+}
+.table-files-body {
+    .row {
+        border-bottom: 1px solid #e3e3e3;
+    }
+}
+.icon {
+    .inlineblock();
+    margin-right: 5px;
+}
+.icon-folder {
+    background: url("@{img-url}icons/icon-folder.png") no-repeat;
+    width: 28px;
+    height: 25px;
+    .opacity(0.6);
+}
+.treeview span.icon.glyphicon {
+    .icon-folder();
+}
+.treeview span.icon.glyphicon-plus:before, .treeview span.icon.glyphicon-minus:before {
+    position: absolute;
+    left: 7px;
+    top: 7px;
+    color: #000000;
+}
+.icon-file {
+    background: url("@{img-url}icons/icon-file.png") center 0 no-repeat;
+    width: 28px;
+    height: 30px;
+}
+.icon-file-doc, .icon-file-docx, .icon-file-odt {
+    background-image: url("@{img-url}icons/icon-file-doc.png");
+}
+.icon-file-pdf {
+    background-image: url("@{img-url}icons/icon-file-pdf.png");
+}
+.icon-file-xls,.icon-file-xlsx, .icon-file-xlsm, .icon-file-ods  {
+    background-image: url("@{img-url}icons/icon-file-xls.png");
+}
+.icon-file-jpg, .icon-file-jpeg, .icon-file-bmp, .icon-file-png, .icon-file-raw, .icon-file-tiff, .icon-file-tif, .icon-file-gif {
+    background-image: url("@{img-url}icons/icon-file-jpg.png");
+}
+.icon-file-zip, .icon-file-7z, .icon-file-gzip, .icon-file-gz, .icon-file-rar, .icon-file-tar {
+    background-image: url("@{img-url}icons/icon-file-zip.png");
+}
