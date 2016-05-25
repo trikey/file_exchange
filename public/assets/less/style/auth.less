@@ -1,0 +1,31 @@
+.auth-form {
+    background: #FFFFFF;
+    max-width: 500px;
+    padding: 80px 50px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    position: relative;
+    &:after {
+        position: absolute;
+        background: url("@{img-url}bg/auth-shadow.png") no-repeat center 0;
+        height: 39px;
+        content: "";
+        bottom: -100px;
+        left: -34px;
+        right: -34px;
+    }
+}
+.gray-link {
+    color: #cacad1;
+    text-decoration: underline;
+    &:hover {
+        color: #0e0e42;
+    }
+}
+.auth-nav {
+    margin-left: 26px;
+    margin-bottom: 50px;
+}
+.forgot-pass-block {
+    margin-top: 80px;
+}

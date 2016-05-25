@@ -19,16 +19,17 @@
                     'method' => 'put'
                     )) !!}
 
-                    <div class="form-group">
-                        {!! Form::label(trans('files.description')) !!}
-                        {!! Form::textarea('description', null, array('placeholder'=>'', 'class' => 'form-control', 'id' => 'file_name')) !!}
-                    </div>
-
 
                     <div class="form-group">
                         {!! Form::label(trans('files.select_file')) !!}
                         {!! Form::file('file', array('id' => 'file')) !!}
                     </div>
+
+                    <div class="form-group">
+                        {!! Form::label(trans('files.description')) !!}
+                        {!! Form::textarea('description', null, array('placeholder'=>'', 'class' => 'form-control file-description', 'id' => 'file_name')) !!}
+                    </div>
+
                     {!! Form::hidden('folder_id', '0') !!}
                     <ul class="text-danger" id="file-errors" style="display: none;">
                         <li>{{ trans('files.name_and_file_are_obligatory_fields') }}</li>
@@ -44,8 +45,8 @@
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-default save_file">{{ trans('files.upload') }}</button>
                 <button type="button" class="btn btn-default close_file_upload" data-dismiss="modal">{{ trans('files.close') }}</button>
+                <button type="button" class="btn btn-primary save_file">{{ trans('files.upload') }}</button>
             </div>
         </div>
 

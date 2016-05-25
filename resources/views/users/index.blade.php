@@ -4,13 +4,20 @@
 @section('meta_title', trans('users.meta_title'))
 
 @section('content')
+<div class="top-line">
+    <div class="row">
+        <div class="col-sm-6">
+            <h1>{{ trans('users.users_list') }}</h1>
+        </div>
+        <div class="col-sm-6 right-text">
+            <a href="{{ route('admin_users_create') }}" class="btn btn-default">
+                {{ trans('users.add_user') }}
+            </a>
+        </div>
+    </div>
+</div>
 
-<h1>{{ trans('users.users_list') }}</h1>
-<a href="{{ route('admin_users_create') }}" class="btn btn-primary">
-  <span class="glyphicon glyphicon-plus"></span> {{ trans('users.add_user') }}
-</a>
-<br/><br/>
-
+{{--
 {!! Form::open(
                 array(
                     'class' => 'form-inline',
@@ -26,9 +33,9 @@
 {!! Form::submit(trans('users.search').'!', array('class' => 'btn btn-primary')) !!}
 {!! Form::close() !!}
 <br/>
+--}}
 
-
-    <table class="table table-bordered">
+    <table class="table custom-table">
             <tr>
                 <th>ID</th>
                 <th>Email</th>
@@ -39,7 +46,6 @@
                 <th>{{ trans('users.is_administrator') }}</th>
                 <th></th>
             </tr>
-
             @foreach($users as $user)
                 <tr>
                     <td>{{ $user->id }}</td>
@@ -50,8 +56,8 @@
                     <td>{{ $user->isModerator ? trans('users.yes') : trans('users.no') }}</td>
                     <td>{{ $user->isAdmin ? trans('users.yes') : trans('users.no') }}</td>
                     <td>
-                        <span data-placement="top" data-toggle="tooltip" title="Edit"><a class="btn btn-primary btn-xs admin_edit" href="{{ route('admin_users_edit', ['id' => $user->id]) }}" data-title="Редактировать"><span class="glyphicon glyphicon-pencil"></span></a></span>
-                        <span data-placement="top" data-toggle="tooltip" title="Delete"><a class="btn btn-danger btn-xs admin_delete" href="{{ route('admin_users_delete', ['id' => $user->id]) }}" data-title="Удалить"><span class="glyphicon glyphicon-trash"></span></a></span>
+                        <span data-placement="top" data-toggle="tooltip" title="Edit"><a class="btn btn-default btn-xs admin_edit" href="{{ route('admin_users_edit', ['id' => $user->id]) }}" data-title="Редактировать"><span class="glyphicon glyphicon-pencil"></span></a></span>
+                        <span data-placement="top" data-toggle="tooltip" title="Delete"><a class="btn btn-default btn-xs admin_delete" href="{{ route('admin_users_delete', ['id' => $user->id]) }}" data-title="Удалить"><span class="glyphicon glyphicon-trash"></span></a></span>
                     </td>
                 </tr>
             @endforeach
