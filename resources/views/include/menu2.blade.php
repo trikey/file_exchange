@@ -1,5 +1,6 @@
 <div class="menu visible-lg">
     <ul class="menu-list">
+        @if(!Auth::guest())
         <li class="menu-item menu-search">
             <a href="#">
                 <span class="icon icon-search open-search"></span>
@@ -8,12 +9,13 @@
                 <div class="close-search-form">
                     <span class="icon icon-close close-search"></span>
                 </div>
-                <form action="">
-                    <input type="text" class="search-filed"/>
+                <form action="{{ Route::getCurrentRoute()->getPath() == 'users' ? route('users_search') : route('search') }}" method="get">
+                    <input type="text" name="query" class="search-filed" value="{{ isset($_REQUEST["query"]) ? $_REQUEST["query"] : '' }}"/>
                     <input type="submit" class="search-btn" value=""/>
                 </form>
             </div>
         </li>
+        @endif
         {{--<li class="menu-item"><a href="{{ url('/') }}">Главная</a></li>--}}
         @if(!Auth::guest() && (Auth::user()->isAdmin || Auth::user()->isModerator))
                 {{--<li class="menu-item"><a href="{{ url('/users/create') }}">Добавить пользователя</a></li>--}}
