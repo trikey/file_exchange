@@ -20,7 +20,7 @@
                     )) !!}
 
 
-                    <div class="form-group">
+                    <div class="form-group upload-file">
                         {!! Form::label(trans('files.select_file')) !!}
                         {!! Form::file('file', array('id' => 'file')) !!}
                     </div>
