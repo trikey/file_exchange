@@ -33,7 +33,6 @@
                 <span class='folder_name' style="display: none;">{{ trans('folders.new_folder') }}</span>
                 <input type="text" name="name" value="Новая папка" class="folder_rename_input" data-method="post" data-url="{{route('admin_folders_store')}}"/>
             </div>
-            </div>
         </div>
         <div class="col-xs-2 table-files-col">
             <div class="webix_cell">

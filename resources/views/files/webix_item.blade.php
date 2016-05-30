@@ -37,7 +37,7 @@
     </ul>
 </div>
 --}}
-<div class="row row-with-popup table-files-row">
+<div class="row row-with-popup table-files-row folder_container">
     <div class="col-lg-6 col-sm-6 col-xs-6 table-files-col">
         <div class="webix_cell folder context download_file" data-target="#context-menu-{{ $file->id }}" id="folder_{{ $file->id }}" data-download-href="{{ route('admin_files_download', ['id' => $file->id]) }}">
             <span class="icon icon-file icon-file-{{ strtolower($file->type) }}"></span>
