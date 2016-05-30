@@ -50,3 +50,26 @@
 .icon-file-zip, .icon-file-7z, .icon-file-gzip, .icon-file-gz, .icon-file-rar, .icon-file-tar {
     background-image: url("@{img-url}icons/icon-file-zip.png");
 }
+.copy-download-link {
+    display: none;
+    line-height: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    &:hover {
+        cursor: pointer;
+    }
+}
+.link-download-file {
+    position: relative;
+    &:hover {
+        span {
+//            display: none;
+            visibility: hidden;
+        }
+        .copy-download-link {
+            display: block;
+        }
+    }
+}

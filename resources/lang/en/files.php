@@ -16,5 +16,6 @@ return [
     're_upload' => 'Update',
     'file_uploaded' => 'File uploaded',
     'file_updated' => 'File updated',
-    'click_add_file' => 'Click here to upload file from your computer'
+    'click_add_file' => 'Click here to upload file from your computer',
+    'copy_link' => 'Copy link'
 ];

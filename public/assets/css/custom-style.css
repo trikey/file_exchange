@@ -604,3 +604,23 @@ h1 {
 .icon-file-tar {
   background-image: url("../img/icons/icon-file-zip.png");
 }
+.copy-download-link {
+  display: none;
+  line-height: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.copy-download-link:hover {
+  cursor: pointer;
+}
+.link-download-file {
+  position: relative;
+}
+.link-download-file:hover span {
+  visibility: hidden;
+}
+.link-download-file:hover .copy-download-link {
+  display: block;
+}

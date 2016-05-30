@@ -62,7 +62,11 @@
     </div>
     <div class="col-lg-2 col-sm-2 col-xs-2 table-files-col">
         <div class="webix_cell">
-            {{ route('admin_files_download', ['id' => $file->id])}}
+            <div class="link-download-file">
+                <span>{{ route('admin_files_download', ['id' => $file->id])}}</span>
+                <div class="btn btn-primary copy-download-link" data-clipboard-text="{{ route('admin_files_download', ['id' => $file->id])}}">{{ trans('files.copy_link') }}</div>
+            </div>
+
         </div>
     </div>
     <div class="file-popup">

@@ -77,6 +77,7 @@
     <script type="text/javascript" src="{{ asset('/assets/js/dropzone.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/bootstrap-contextmenu.js?'.time()) }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/client.js?'.time()) }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/clipboard.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/dom.js?'.time()) }}"></script>
     @if(!Auth::guest())
         @if(Auth::user()->isAdmin || Auth::user()->isModerator)

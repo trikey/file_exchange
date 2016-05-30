@@ -26,4 +26,7 @@ $('document').ready(function () {
     $(document).on('change', '#file',function () {
         $('.upload-file-name').text($(this).val());
     });
+    var btns = document.querySelectorAll('.copy-download-link');
+    var clipboard = new Clipboard(btns);
+
 });
