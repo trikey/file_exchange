@@ -15,5 +15,6 @@ return [
     'move' => 'Move',
     're_upload' => 'Update',
     'file_uploaded' => 'File uploaded',
-    'file_updated' => 'File updated'
+    'file_updated' => 'File updated',
+    'click_add_file' => 'Click here to upload file from your computer'
 ];
