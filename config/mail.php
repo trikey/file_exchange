@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'from' => ['address' => 'root@localhost.com', 'name' => 'root@localhost.com'],
+    'from' => ['address' => 'info@media.redmond.company', 'name' => 'info@media.redmond.company'],
 
     /*
     |--------------------------------------------------------------------------
