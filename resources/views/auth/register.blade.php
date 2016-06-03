@@ -9,7 +9,7 @@
         <li role="presentation"><a href="{{ url('/login') }}">{{ trans('menu.login') }}</a></li>
         <li role="presentation" class="active"><a href="{{ url('/register') }}">{{ trans('menu.register') }}</a></li>
     </ul>
-    <form  method="POST" action="{{ url('/login') }}">
+    <form  method="POST" action="{{ url('/register') }}">
         {!! csrf_field() !!}
 
         <div class="form-group required{{ $errors->has('fio') ? ' has-error' : '' }}">

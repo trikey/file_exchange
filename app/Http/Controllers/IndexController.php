@@ -19,6 +19,10 @@ class IndexController extends Controller
 
     public function index()
     {
+        if (Auth::user()->canAccess || Auth::user()->isAdmin || Auth::user()->isModerator)
+        {
+            return redirect(route('admin_folders'));
+        }
         return view('index');
 //        return redirect(route('admin_folders'));
     }
