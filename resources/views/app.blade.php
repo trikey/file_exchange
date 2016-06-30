@@ -30,7 +30,7 @@
     <!-- csrf protection -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
-<body class="lang_{{ App::getLocale() }}">
+<body class="lang_{{ App::getLocale() }} @if(Auth::guest()) login-bg @endif">
     <div class="header">
         <div class="container-fluid">
             <div class="menu-icon visible-xs-inline-block visible-sm-inline-block visible-md-inline-block">
@@ -40,7 +40,7 @@
                 <img src="{{ asset('/assets/img/logo.png') }}" alt=""/>
             </a>
             <div class="name">
-                Media
+                Marketing resource
             </div>
             @include('include/menu2')
         </div>

@@ -16,6 +16,7 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('/home', function() { return redirect('/'); });
     Route::get('/', 'IndexController@index');
+    Route::get('/index', 'IndexController@main');
 
 
     Route::get('users', ['as' => 'admin_users', 'uses' => 'UsersController@index']);
@@ -47,6 +48,7 @@ Route::group(['middleware' => 'web'], function () {
 //    Route::get('files/{id}/edit', ['as' => 'admin_files_edit', 'uses' => 'FilesController@edit']);
     Route::put('files/{id}/edit', ['as' => 'admin_files_update', 'uses' => 'FilesController@update']);
     Route::get('files/{id}', ['as' => 'admin_files_download', 'uses' => 'FilesController@download']);
+    Route::get('files/info/{id}', ['as' => 'admin_files_get_info', 'uses' => 'FilesController@getInfo']);
 
     Route::get('search', ['as' => 'search', 'uses' => 'FoldersController@search']);
     Route::get('users/search', ['as' => 'users_search', 'uses' => 'UsersController@search']);

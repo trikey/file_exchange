@@ -18,7 +18,7 @@ class FoldersController extends Controller
         $this->create_view = 'folders.create';
         $this->index_view = 'folders.list';
         $this->edit_view = 'folders.edit';
-        $this->item_view = 'folders.webix_item';
+        $this->item_view = 'folders.big_item';
 
         $this->model = 'App\Folder';
 
@@ -29,7 +29,7 @@ class FoldersController extends Controller
     {
         $model = $this->model;
         $folders = $model::FindRootFolders()->get();
-        $parentFolder = 'NULL';
+        $parentFolder = '0';
         $breadcrumbs = [];
         $files = \App\File::FindFilesByFolderId(0)->get();
         return view($this->index_view, compact('folders', 'parentFolder', 'breadcrumbs', 'files'));

@@ -26,17 +26,12 @@
         background-position: 0 100%;
     }
 }
-.header {
-    height: @header-height;
-    background: #FFFFFF;
-    padding: 15px 0 20px 0;
-}
 .logo {
     .inlineblock();
 }
 .name {
     .inlineblock();
-    color: #8b8b8b;
+    color: #FFFFFF;
     font-size: 16px;
     border-left: 1px solid #b3b3b3;
     margin-left: 10px;
@@ -44,14 +39,15 @@
 }
 .header {
     height: @header-height;
-    border-bottom: 1px solid @dark-gray-border;
+//    border-bottom: 1px solid @dark-gray-border;
     padding: @header-padding-top 0;
     position: fixed;
     left: 0;
     top: 0;
     right: 0;
     z-index: 1001;
-    background: @default-bg;
+    background: #232323;
+    color: #FFFFFF;
     + div {
         margin-top: @header-height;
     }
@@ -85,7 +81,7 @@
 .menu-icon-inner {
     width: 100%;
     height: 2px;
-    background: @default-color;
+    background: #FFFFFF;
     position: relative;
     &:before, &:after {
         content: '';
@@ -93,7 +89,7 @@
         left: 0;
         right: 0;
         height: 2px;
-        background: @default-color;
+        background: #FFFFFF;
     }
     &:before {
         top: -7px;
@@ -102,6 +98,7 @@
         bottom: -7px;
     }
 }
+
 .menu {
     float: right;
     padding-top: 5px;
@@ -114,11 +111,10 @@
 .menu-item {
     .inlineblock;
     font-size: @medium-font-size;
-    text-transform: uppercase;
     position: relative;
     a {
-        color: #000000;
-        font-weight: 600;
+        color: #FFFFFF;
+        font-weight: 300;
         &:hover {
             text-decoration: none;
             color: @red-color;
@@ -159,6 +155,20 @@
 //        }
 //    }
 }
+.basket-count {
+    position: absolute;
+    right: -3px;
+    top: -7px;
+    background: #FFFFFF;
+    color: #000000;
+    min-width: 17px;
+    height: 17px;
+    text-align: center;
+    line-height: 17px;
+    .border-radius(50%);
+    font-size: 10px;
+    font-weight: bold;
+}
 .header-dropdown-menu {
     display: none;
     position: absolute;
@@ -167,7 +177,7 @@
     z-index: 6;
     text-align: left;
     text-transform: none;
-    background: @default-bg;
+    background: #232323;
     padding: 15px 20px;
     li {
         display: block;
@@ -223,7 +233,7 @@
         float: none;
         position: fixed;
         z-index: 10;
-        background: @default-bg;
+        background: #000000;
         text-align: left;
         left: 0;
         top: @header-height;

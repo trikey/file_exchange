@@ -64,9 +64,16 @@ html {
   min-height: 100%;
 }
 body {
-  background: #f0f0f0;
+  background: #FFFFFF;
   margin-bottom: 60px;
   font-family: 'Open Sans', sans-serif;
+}
+body.login-bg {
+  background: url("../img/bg/login-bg.jpg") no-repeat center center;
+  background-size: cover;
+}
+body.login-bg .footer {
+  background: none;
 }
 h1 {
   text-transform: uppercase;
@@ -156,6 +163,216 @@ h1 {
 .upload-file-name {
   margin-top: 20px;
 }
+.big-file {
+  background-size: contain;
+  overflow: hidden;
+  margin-bottom: 25px;
+  position: relative;
+  border: 1px solid #ebebeb;
+}
+.big-file:before {
+  content: "";
+  padding-top: 100%;
+  float: left;
+}
+.big-file:hover {
+  cursor: pointer;
+}
+.big-file:hover:after {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  content: '';
+  background: url("../img/icons/plus.png") no-repeat center center rgba(0, 0, 0, 0.5);
+}
+.big-folder {
+  background: url("../img/icons/icon-big-folder.png") center bottom no-repeat;
+  background-size: contain;
+  overflow: hidden;
+  margin-bottom: 25px;
+}
+.big-folder:before {
+  content: "";
+  padding-top: 100%;
+  float: left;
+}
+.file-item {
+  margin-bottom: 45px;
+}
+.file-item a {
+  color: #000000;
+  text-decoration: underline;
+  font-size: 18px;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
+}
+.file-item a:hover {
+  text-decoration: none;
+}
+.file-item img {
+  max-width: 100%;
+}
+.row-file {
+  font-size: 0;
+  line-height: 0;
+  letter-spacing: -1px;
+}
+.row-file [class^=col-] {
+  display: inline-block;
+  vertical-align: top;
+  zoom: 1 !ie;
+  display: inline !ie;
+  float: none;
+  line-height: 1.4;
+}
+@media (max-width: 768px) {
+  .row-file [class^=col-] {
+    width: 100%;
+  }
+}
+.workspace {
+  margin-right: 350px;
+}
+.file-info {
+  position: fixed;
+  right: -300px;
+  bottom: 0;
+  top: 65px;
+  width: 300px;
+  background: #f2f2f2;
+  padding: 20px;
+  font-weight: 300;
+  -webkit-transition: all 0.1s;
+  -moz-transition: all 0.1s;
+  -ms-transition: all 0.1s;
+  -o-transition: all 0.1s;
+  transition: all 0.1s;
+}
+.file-info p {
+  margin-bottom: 0;
+}
+.file-info img {
+  width: 100%;
+}
+.file-info.opened {
+  right: 0;
+}
+.folder_rename_input {
+  width: 100%;
+  height: 30px;
+  font-size: 18px;
+}
+.icon-basket {
+  background: url("../img/icons/basket.png") no-repeat;
+  width: 24px;
+  height: 19px;
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 5px;
+}
+.file-info-name {
+  font-weight: bold;
+}
+.file-info-preview {
+  margin-bottom: 10px;
+}
+.file-info-description {
+  border-top: 1px solid #e4e4e4;
+  margin-top: 10px;
+  padding-top: 10px;
+}
+.file-info-description p {
+  margin-bottom: 10px;
+}
+.section-item {
+  margin-bottom: 30px;
+  position: relative;
+}
+.section-item img {
+  width: 100%;
+}
+.section-center {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  text-align: center;
+}
+.section-center:before {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+}
+.section-title {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 18px;
+  font-weight: bold;
+  color: #000000;
+}
+.section-title span {
+  text-decoration: underline;
+}
+.section-title-white {
+  color: #FFFFFF;
+}
+.section-link {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  display: block;
+}
+.section-link:hover + .section-center .section-title span {
+  text-decoration: none;
+}
+.search-input {
+  background: none;
+  border: none;
+  border-bottom: 1px solid #c5c5c5;
+  border-radius: 0;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  width: 100%;
+  color: #000000;
+  height: 32px;
+}
+.search-input:focus {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+.form-search {
+  position: relative;
+}
+.btn-search {
+  position: absolute;
+  left: 0;
+  top: 6px;
+  background: none;
+  border: 0 none;
+  outline: none;
+  display: inline-block;
+  vertical-align: top;
+  zoom: 1 !ie;
+  display: inline !ie;
+  margin-right: 5px;
+  background: url("../img/icons/icon-search.png") no-repeat;
+  width: 18px;
+  height: 18px;
+}
+.btn-search:hover {
+  background-position: 0 100%;
+}
 .icon {
   display: inline-block;
   vertical-align: top;
@@ -175,11 +392,6 @@ h1 {
 .icon-search:hover {
   background-position: 0 100%;
 }
-.header {
-  height: 65px;
-  background: #FFFFFF;
-  padding: 15px 0 20px 0;
-}
 .logo {
   display: inline-block;
   vertical-align: top;
@@ -191,7 +403,7 @@ h1 {
   vertical-align: top;
   zoom: 1 !ie;
   display: inline !ie;
-  color: #8b8b8b;
+  color: #FFFFFF;
   font-size: 16px;
   border-left: 1px solid #b3b3b3;
   margin-left: 10px;
@@ -199,14 +411,14 @@ h1 {
 }
 .header {
   height: 65px;
-  border-bottom: 1px solid #b3b3b3;
   padding: 15px 0;
   position: fixed;
   left: 0;
   top: 0;
   right: 0;
   z-index: 1001;
-  background: #ffffff;
+  background: #232323;
+  color: #FFFFFF;
 }
 .header + div {
   margin-top: 65px;
@@ -247,7 +459,7 @@ h1 {
 .menu-icon-inner {
   width: 100%;
   height: 2px;
-  background: #000000;
+  background: #FFFFFF;
   position: relative;
 }
 .menu-icon-inner:before,
@@ -257,7 +469,7 @@ h1 {
   left: 0;
   right: 0;
   height: 2px;
-  background: #000000;
+  background: #FFFFFF;
 }
 .menu-icon-inner:before {
   top: -7px;
@@ -280,12 +492,11 @@ h1 {
   zoom: 1 !ie;
   display: inline !ie;
   font-size: 16px;
-  text-transform: uppercase;
   position: relative;
 }
 .menu-item a {
-  color: #000000;
-  font-weight: 600;
+  color: #FFFFFF;
+  font-weight: 300;
 }
 .menu-item a:hover {
   text-decoration: none;
@@ -319,6 +530,25 @@ h1 {
 .menu-item.header-dropdown:hover .header-dropdown-menu {
   display: block;
 }
+.basket-count {
+  position: absolute;
+  right: -3px;
+  top: -7px;
+  background: #FFFFFF;
+  color: #000000;
+  min-width: 17px;
+  height: 17px;
+  text-align: center;
+  line-height: 17px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  font-size: 10px;
+  font-weight: bold;
+}
 .header-dropdown-menu {
   display: none;
   position: absolute;
@@ -327,7 +557,7 @@ h1 {
   z-index: 6;
   text-align: left;
   text-transform: none;
-  background: #ffffff;
+  background: #232323;
   padding: 15px 20px;
 }
 .header-dropdown-menu li {
@@ -397,7 +627,7 @@ h1 {
     float: none;
     position: fixed;
     z-index: 10;
-    background: #ffffff;
+    background: #000000;
     text-align: left;
     left: 0;
     top: 65px;
@@ -471,12 +701,12 @@ h1 {
 .footer {
   height: 60px;
   padding-top: 20px;
-  border-top: 1px solid #bdbdbd;
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
-  background: #f0f0f0;
+  background: #232323;
+  color: #FFFFFF;
   z-index: 2;
 }
 .copyright {
@@ -487,7 +717,7 @@ h1 {
   margin-left: 10px;
 }
 .auth-form {
-  background: #FFFFFF;
+  background: rgba(255, 255, 255, 0.8);
   max-width: 500px;
   padding: 80px 50px;
   margin-top: 100px;
@@ -503,11 +733,19 @@ h1 {
   left: -34px;
   right: -34px;
 }
+.auth-form .form-control {
+  background: rgba(255, 255, 255, 0.3);
+  color: #0e0e42;
+}
+.auth-form .form-control:focus {
+  background: rgba(255, 255, 255, 0.4);
+}
 .gray-link {
-  color: #cacad1;
+  color: #0e0e42;
   text-decoration: underline;
 }
 .gray-link:hover {
+  text-decoration: none;
   color: #0e0e42;
 }
 .auth-nav {
@@ -518,7 +756,10 @@ h1 {
   margin-top: 80px;
 }
 .control-label {
-  color: #cacad1;
+  color: #0e0e42;
+  filter: alpha(opacity=30);
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
+  opacity: 0.3;
   font-weight: 300;
   margin-left: 26px;
   margin-bottom: 10px;
@@ -605,22 +846,123 @@ h1 {
   background-image: url("../img/icons/icon-file-zip.png");
 }
 .copy-download-link {
-  display: none;
   line-height: 1;
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
 }
 .copy-download-link:hover {
   cursor: pointer;
 }
+/**/
+.icon-big-file {
+  background: url("../img/icons/icon-big-file.png") center center no-repeat #ffffff;
+}
+.icon-big-file-doc,
+.icon-big-file-docx,
+.icon-big-file-odt {
+  background-image: url("../img/icons/icon-big-file-doc.png");
+}
+.icon-big-file-pdf {
+  background-image: url("../img/icons/icon-big-file-pdf.png");
+}
+.icon-big-file-txt {
+  background-image: url("../img/icons/icon-big-file-txt.png");
+}
+.icon-big-file-mp3,
+.icon-big-file-wav,
+.icon-big-file-aif,
+.icon-big-file-mid {
+  background-image: url("../img/icons/icon-big-file-mp3.png");
+}
+.icon-big-file-mp4,
+.icon-big-file-avi,
+.icon-big-file-mpeg {
+  background-image: url("../img/icons/icon-big-file-avi.png");
+}
+.icon-big-file-xls,
+.icon-big-file-xlsx,
+.icon-big-file-xlsm,
+.icon-big-file-ods {
+  background-image: url("../img/icons/icon-big-file-xls.png");
+}
+.icon-big-file-ppt,
+.icon-big-file-pptx {
+  background-image: url("../img/icons/icon-big-file-ppt.png");
+}
+.icon-big-file-jpg,
+.icon-big-file-jpeg,
+.icon-big-file-bmp,
+.icon-big-file-png,
+.icon-big-file-raw,
+.icon-big-file-tiff,
+.icon-big-file-tif,
+.icon-big-file-gif {
+  background-image: url("../img/icons/icon-big-file-jpg.png");
+}
+.icon-big-file-zip,
+.icon-big-file-7z,
+.icon-big-file-gzip,
+.icon-big-file-gz,
+.icon-big-file-rar,
+.icon-big-file-tar {
+  background-image: url("../img/icons/icon-big-file-zip.png");
+}
+.icon-big-file-psd {
+  background-image: url("../img/icons/icon-big-file-psd.png");
+}
+.icon-big-file-img {
+  background-size: contain;
+}
 .link-download-file {
   position: relative;
+  border-top: 1px solid #e4e4e4;
+  margin-top: 10px;
+  padding-top: 10px;
+}
+.link-download-file:before,
+.link-download-file:after {
+  content: "";
+  display: table;
+}
+.link-download-file:after {
+  clear: both;
 }
 .link-download-file:hover span {
   visibility: hidden;
 }
 .link-download-file:hover .copy-download-link {
   display: block;
+}
+.file-action {
+  background-image: url("../img/icons/icons-file-actions.png");
+  background-repeat: no-repeat;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+.file-action.addbasket {
+  background-position: -10px -10px;
+  width: 35px;
+  height: 31px;
+}
+.file-action.addbasket:hover {
+  background-position: -10px -61px;
+  width: 35px;
+  height: 31px;
+}
+.file-action.download {
+  background-position: -10px -112px;
+  width: 28px;
+  height: 29px;
+}
+.file-action.download:hover {
+  background-position: -10px -161px;
+  width: 28px;
+  height: 29px;
+}
+.file-action-block {
+  float: left;
+  width: 100px;
+}
+.file-action-block-copy-link {
+  margin-left: 100px;
 }

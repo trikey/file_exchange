@@ -1,5 +1,5 @@
 .auth-form {
-    background: #FFFFFF;
+    background: fade(#FFFFFF, 80%);
     max-width: 500px;
     padding: 80px 50px;
     margin-top: 100px;
@@ -14,11 +14,19 @@
         left: -34px;
         right: -34px;
     }
+    .form-control {
+        background: fade(#FFFFFF, 30%);
+        color: #0e0e42;
+        &:focus {
+            background: fade(#FFFFFF, 40%);;
+        }
+    }
 }
 .gray-link {
-    color: #cacad1;
+    color: #0e0e42;
     text-decoration: underline;
     &:hover {
+        text-decoration: none;
         color: #0e0e42;
     }
 }

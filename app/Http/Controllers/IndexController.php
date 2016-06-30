@@ -26,4 +26,13 @@ class IndexController extends Controller
         return view('index');
 //        return redirect(route('admin_folders'));
     }
+    public function main()
+    {
+        if (Auth::user()->canAccess || Auth::user()->isAdmin || Auth::user()->isModerator)
+        {
+            $breadcrumbs = [['name' => 'REDMOND', 'url' => '#']];
+            return view('folders.main', compact('breadcrumbs'));
+        }
+
+    }
 }

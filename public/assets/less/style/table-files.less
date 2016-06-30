@@ -51,25 +51,100 @@
     background-image: url("@{img-url}icons/icon-file-zip.png");
 }
 .copy-download-link {
-    display: none;
+//    display: none;
     line-height: 1;
-    position: absolute;
-    top: 0;
-    left: 0;
+//    position: absolute;
+//    top: 0;
+//    left: 0;
     width: 100%;
     &:hover {
         cursor: pointer;
     }
 }
+
+/**/
+.icon-big-file {
+    background: url("@{img-url}icons/icon-big-file.png") center center no-repeat #FFFFFF;
+}
+.icon-big-file-doc, .icon-big-file-docx, .icon-big-file-odt {
+    background-image: url("@{img-url}icons/icon-big-file-doc.png");
+}
+.icon-big-file-pdf {
+    background-image: url("@{img-url}icons/icon-big-file-pdf.png");
+}
+.icon-big-file-txt {
+    background-image: url("@{img-url}icons/icon-big-file-txt.png");
+}
+.icon-big-file-mp3, .icon-big-file-wav, .icon-big-file-aif, .icon-big-file-mid,{
+    background-image: url("@{img-url}icons/icon-big-file-mp3.png");
+}
+.icon-big-file-mp4, .icon-big-file-avi, .icon-big-file-mpeg {
+    background-image: url("@{img-url}icons/icon-big-file-avi.png");
+}
+.icon-big-file-xls,.icon-big-file-xlsx, .icon-big-file-xlsm, .icon-big-file-ods  {
+    background-image: url("@{img-url}icons/icon-big-file-xls.png");
+}
+.icon-big-file-ppt,.icon-big-file-pptx  {
+    background-image: url("@{img-url}icons/icon-big-file-ppt.png");
+}
+.icon-big-file-jpg, .icon-big-file-jpeg, .icon-big-file-bmp, .icon-big-file-png, .icon-big-file-raw, .icon-big-file-tiff, .icon-big-file-tif, .icon-big-file-gif {
+    background-image: url("@{img-url}icons/icon-big-file-jpg.png");
+}
+.icon-big-file-zip, .icon-big-file-7z, .icon-big-file-gzip, .icon-big-file-gz, .icon-big-file-rar, .icon-big-file-tar {
+    background-image: url("@{img-url}icons/icon-big-file-zip.png");
+}
+.icon-big-file-psd {
+    background-image: url("@{img-url}icons/icon-big-file-psd.png");
+}
+.icon-big-file-img {
+    background-size: contain;
+}
+.stitches-icon(@x: 0, @y: 0, @width: 0, @height: 0) {
+    background-position: @x @y;
+    width: @width;
+    height: @height;
+}
 .link-download-file {
+    .clearfix;
     position: relative;
+    border-top: 1px solid #e4e4e4;
+    margin-top: 10px;
+    padding-top: 10px;
     &:hover {
         span {
-//            display: none;
             visibility: hidden;
         }
         .copy-download-link {
             display: block;
         }
     }
+}
+.file-action {
+    background-image: url("@{img-url}icons/icons-file-actions.png");
+    background-repeat: no-repeat;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+
+    &.addbasket {
+        .stitches-icon(-10px, -10px, 35px, 31px);
+        &:hover {
+            .stitches-icon(-10px, -61px, 35px, 31px);
+        }
+    }
+
+    &.download {
+        .stitches-icon(-10px, -112px, 28px, 29px);
+        &:hover {
+            .stitches-icon(-10px, -161px, 28px, 29px);
+        }
+    }
+
+}
+.file-action-block {
+    float: left;
+    width: 100px;
+}
+.file-action-block-copy-link {
+    margin-left: 100px;
 }

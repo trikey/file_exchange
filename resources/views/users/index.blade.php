@@ -7,6 +7,8 @@
 <div class="top-line">
     <div class="row">
         <div class="col-sm-6">
+            @include('include.search')
+            <br/>
             <h1>{{ trans('users.users_list') }}</h1>
         </div>
         <div class="col-sm-6 right-text">

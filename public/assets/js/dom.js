@@ -26,7 +26,23 @@ $('document').ready(function () {
     $(document).on('change', '#file',function () {
         $('.upload-file-name').text($(this).val());
     });
-    var btns = document.querySelectorAll('.copy-download-link');
-    var clipboard = new Clipboard(btns);
 
+
+    $(document).on('click', '.file-item-info', function () {
+        var $this;
+        $this = $(this);
+        $.ajax({
+            url: $this.data('get-info'),
+            type: 'get'
+        }).done(function(data) {
+            var $infoPanel = $('.file-info');
+            if (!$infoPanel.hasClass('opened')) {
+                $infoPanel.addClass('opened');
+            }
+            $('.file-info').html(data);
+            var btns = document.querySelectorAll('.copy-download-link');
+            var clipboard = new Clipboard(btns);
+        });
+        return false;
+    });
 });

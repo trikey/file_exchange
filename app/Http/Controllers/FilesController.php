@@ -19,7 +19,7 @@ class FilesController extends Controller
         $this->index_view = 'folders.list';
         $this->edit_view = 'files.edit';
         $this->multi_view = 'files.multi';
-        $this->item_view = 'files.webix_item';
+        $this->item_view = 'files.big_item';
 
         $this->model = 'App\File';
 
@@ -130,5 +130,11 @@ class FilesController extends Controller
         $class = $this->model;
         $object = $class::find($id)->toArray();
         return response()->download(public_path().$object['path']);
+    }
+
+    public function getInfo ($id) {
+        $model = $this->model;
+        $file = $model::find($id);
+        return view('files.info', compact('file'));
     }
 }
