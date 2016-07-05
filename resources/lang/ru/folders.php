@@ -22,5 +22,8 @@ return [
     'root'              => 'Корень',
     'search_results'    => 'Результаты поиска',
     'download_all'      => 'Скачать все',
-    'update'            => 'Изменен'
+    'update'            => 'Изменен',
+    'update_preview_picture' => 'Изменить',
+    'file_is_obligatory_field' => 'Файл и Название являются обязательными полями',
+    'file_update' => 'Загрузить изображение'
 ];

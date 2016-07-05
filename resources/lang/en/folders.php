@@ -22,5 +22,8 @@ return [
     'root'              => 'Root',
     'search_results'    => 'Search results',
     'download_all'      => 'Download All',
-    'update'            => 'Update'
+    'update'            => 'Update',
+    'update_preview_picture' => 'Update',
+    'file_is_obligatory_field' => 'File and Name are obligatory fields',
+    'file_update' => 'Upload an image'
 ];

@@ -2,7 +2,7 @@
 array(
 'class' => '',
 'novalidate' => 'novalidate',
-'url' => '/search',
+'url' => strstr($_SERVER["REQUEST_URI"], 'users') ? '/users/search' : '/search',
 'id' => 'search_form',
 'method' => 'get'
 )) !!}

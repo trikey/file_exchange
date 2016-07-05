@@ -23,7 +23,11 @@
 <div class="link-download-file">
     <div class="file-action-block">
         <a class="file-action download" href="{{ route('admin_files_download', ['id' => $file->id])}}"></a>
-        <a class="file-action addbasket" href="#"></a>
+        @if(strstr($_SERVER["HTTP_REFERER"], route('filebox')))
+            <a class="file-action addbasket remove-from-file-box" href="{{ route('admin_remove_from_file_box', ['id' => $file->id])}}"></a>
+        @else
+            <a class="file-action addbasket add-to-file-box" href="{{ route('admin_add_to_file_box', ['id' => $file->id])}}"></a>
+        @endif
     </div>
     <div class="file-action-block-copy-link">
         <div class="btn btn-primary copy-download-link" data-clipboard-text="{{ route('admin_files_download', ['id' => $file->id])}}">{{ trans('files.copy_link') }}</div>

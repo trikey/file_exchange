@@ -2,7 +2,7 @@
     <ul class="menu-list">
         @if(!Auth::guest())
             <li class="menu-item">
-                <a href="#"><span class="icon-basket"></span>{{ trans('menu.basket') }}<span class="basket-count">3</span></a>
+                <a href="{{ url('/filebox') }}"><span class="icon-basket"></span>{{ trans('menu.basket') }}@if(count(session('file_box')) > 0)<span class="basket-count">{{ count(session('file_box')) }}</span>@endif</a>
             </li>
         @endif
         @if(!Auth::guest() && (Auth::user()->isAdmin || Auth::user()->isModerator))

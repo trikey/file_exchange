@@ -9,5 +9,6 @@ return [
     'forgot_password'        => 'Забыли пароль?',
     'logout'                 => 'Выйти',
     'select_language'        => 'Выбрать Язык',
-    'basket'                 => 'Корзина'
+    'basket'                 => 'Файл Бокс',
+    'filebox_empty' => 'Нет файлов в Файл Боксе'
 ];

@@ -16,7 +16,7 @@
                 <h1>{{ trans('folders.files_and_folders') }}</h1>
             </div>
             <div class="col-sm-6 right-text">
-                <a href="#" class="btn btn-default add_folder">
+                <a href="{{ route('download_all', ['id' => $parentFolder]) }}" class="btn btn-default download-all">
                     {{ trans('folders.download_all') }}
                 </a>
                 @if(Auth::user()->isAdmin || Auth::user()->isModerator)
@@ -49,5 +49,6 @@
 
 
 <div id="file_add_contaier"></div>
+<div id="folder_update_container"></div>
 
 @endsection

@@ -9,5 +9,6 @@ return [
     'forgot_password'        => 'Forgot password?',
     'logout'                 => 'Logout',
     'select_language'        => 'Language',
-    'basket'                 => 'Basket'
+    'basket'                 => 'File Box',
+    'filebox_empty' => 'No files in File Box'
 ];

@@ -198,6 +198,20 @@ $ ->
             $('#filesModal').modal('show')
         )
         false
+
+    $('body').on 'click', '.update_folder', ->
+        id = $(this).attr('data-id')
+        $("#context-menu-#{id}").hide()
+        $this = $(this)
+        $.ajax
+            url: $this.attr('data-url'),
+            type: 'get',
+        .done( (data) ->
+            $('#folder_update_container').html(data);
+            $('#folderModal').modal('show')
+        )
+        false
+
 #    $(document).on 'submit', "form#file_upload_form", ->
 #        $('#file_upload_form input[name=folder_id]').val($('#folders').attr('data-parent-id'))
 #        formData = new FormData($(this)[0])

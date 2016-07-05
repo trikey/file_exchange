@@ -203,7 +203,7 @@
       $('#file_upload_form').submit();
       return false;
     });
-    return $('body').on('click', '.update_file', function() {
+    $('body').on('click', '.update_file', function() {
       var $this, id;
       id = $(this).attr('data-id');
       $("#context-menu-" + id).hide();
@@ -214,6 +214,20 @@
       }).done(function(data) {
         $('#file_add_contaier').html(data);
         return $('#filesModal').modal('show');
+      });
+      return false;
+    });
+    return $('body').on('click', '.update_folder', function() {
+      var $this, id;
+      id = $(this).attr('data-id');
+      $("#context-menu-" + id).hide();
+      $this = $(this);
+      $.ajax({
+        url: $this.attr('data-url'),
+        type: 'get'
+      }).done(function(data) {
+        $('#folder_update_container').html(data);
+        return $('#folderModal').modal('show');
       });
       return false;
     });

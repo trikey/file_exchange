@@ -13,10 +13,10 @@ class Folder extends BaseModel
      * @var array
      */
     protected $fillable = [
-        'name', 'description', 'created_by', 'modified_by', 'parent_id', 'text'
+        'name', 'description', 'path', 'created_by', 'modified_by', 'parent_id', 'text'
     ];
 
-    protected $appends = ['text', 'type', 'url'];
+    protected $appends = ['text', 'type', 'url', 'count'];
 
 
     public static function boot()
@@ -25,6 +25,14 @@ class Folder extends BaseModel
 
         static::deleted(function($table)
         {
+            if (strlen($table->path) > 0) {
+                $target = public_path(). $table->path;
+                if (file_exists($target)) {
+                    $dirname = dirname($target);
+                    unlink( $target );
+                    rmdir( $dirname );
+                }
+            }
             foreach($table->childrenFiles as $child)
             {
                 $child->delete(); // Causes any child "deleted" events to be called
@@ -34,6 +42,13 @@ class Folder extends BaseModel
                 $child->delete(); // Causes any child "deleted" events to be called
             }
         });
+    }
+
+    public function getCountAttribute()
+    {
+        $folders = \App\Folder::where('parent_id', '=',  $this->attributes['id'])->pluck('id');
+        $folders[] = $this->attributes['id'];
+        return \App\File::whereIn('folder_id', $folders)->count();
     }
 
     public function getTypeAttribute()
@@ -136,6 +151,45 @@ class Folder extends BaseModel
 
             array_unshift($folders, ['name' => $folder->name, 'id' => $folder->id, 'url' => $folder->url]);
             self::getParent($id, $folders);
+        }
+        return $folders;
+    }
+
+    public static function getPath($id, $array = [])
+    {
+        $folder = \App\Folder::find($id);
+        $array[] = $folder->name;
+        while($folder->parent_id != 0)
+        {
+            $id = $folder->parent_id;
+            $folder = \App\Folder::find($id);
+            $array[] = $folder->name;
+            self::getPath($id, $array);
+        }
+        return $_SERVER["DOCUMENT_ROOT"].'/download' . '/'.implode('/',array_reverse($array));
+    }
+
+    public static function getParentForMkdir($id, $folders = [])
+    {
+        $folderings = \App\Folder::where('parent_id', '=', $id)->get();
+//        if ($folderings->count() > 0) {
+            foreach($folderings as $folder)
+            {
+//                array_unshift($folders, ['name' => $folder->name, 'id' => $folder->id, 'url' => $folder->url, 'path' => self::getPath($folder->id)]);
+                $folders[$folder->id] = ['name' => $folder->name, 'id' => $folder->id, 'url' => $folder->url, 'path' => self::getPath($folder->id)];
+
+                self::getParentForMkdir($folder->id, $folders);
+            }
+//        }
+        return $folders;
+    }
+
+
+    public static function getCategoryTreeForParentId($id, &$folders = []) {
+        $folderings = \App\Folder::where('parent_id', '=', $id)->get();
+        foreach ($folderings as $folder) {
+            $folders[$folder->id] = ['name' => $folder->name, 'id' => $folder->id, 'url' => $folder->url, 'path' => self::getPath($folder->id)];
+            self::getCategoryTreeForParentId($folder['id'], $folders);
         }
         return $folders;
     }

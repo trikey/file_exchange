@@ -35,8 +35,16 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('folders/{id}/edit', ['as' => 'admin_folders_edit', 'uses' => 'FoldersController@edit']);
     Route::put('folders/{id}/edit', ['as' => 'admin_folders_update', 'uses' => 'FoldersController@update']);
     Route::get('folders/{id}', ['as' => 'admin_folder_view', 'uses' => 'FoldersController@viewFolder']);
+    Route::get('folders/getmodal/{id}', ['as' => 'admin_folders_get_modal_update', 'uses' => 'FoldersController@getModalForUpdate']);
+    Route::put('folders/{id}/update', ['as' => 'admin_folders_update_preview_picture', 'uses' => 'FoldersController@updatePreviewPicture']);
+
+    Route::get('filebox', ['as' => 'filebox', 'uses' => 'FoldersController@filebox']);
+    Route::post('filebox/{id}', ['as' => 'admin_add_to_file_box', 'uses' => 'FoldersController@addToFileBox']);
+    Route::post('filebox/remove/{id}', ['as' => 'admin_remove_from_file_box', 'uses' => 'FoldersController@removeFromFileBox']);
 
 
+    Route::get('download/{id}', ['as' => 'download_all', 'uses' => 'FoldersController@downloadAll']);
+    Route::get('download_filebox', ['as' => 'download_filebox', 'uses' => 'FoldersController@downloadFileBox']);
 //    Route::get('files', ['as' => 'admin_files', 'uses' => 'FilesController@index']);
     Route::get('files/getmodal', ['as' => 'admin_files_get_modal', 'uses' => 'FilesController@getModal']);
     Route::get('files/getmodal/{id}', ['as' => 'admin_files_get_modal_update', 'uses' => 'FilesController@getModalForUpdate']);

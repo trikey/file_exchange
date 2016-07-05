@@ -25,6 +25,7 @@
 <!--    </div>-->
 <!--</div>-->
 <div class="col-sm-4 col-md-3 col-lg-2 folder_container">
+
     <div class="file-item context" id="folder_{{ $folder->id }}" data-target="#context-menu-{{ $folder->id }}">
         <div class="big-folder"></div>
         <a href="{{ route('admin_folder_view', ['id' => $folder->id]) }}" class="folder_name">{{ $folder->name }}</a>
@@ -35,6 +36,7 @@
             <li><a tabindex="-1" href="#" class="rename_folder" data-id="{{ $folder->id }}">{{ trans('folders.rename') }}</a></li>
             <li><a tabindex="-1" href="#" class="delete_folder" data-id="{{ $folder->id }}" data-url="{{ route('admin_folders_delete', ['id' => $folder->id]) }}">{{ trans('folders.delete') }}</a></li>
             <li><a tabindex="-1" href="#" class="move_folder" data-id="{{ $folder->id }}">{{ trans('folders.move') }}</a></li>
+            <li><a tabindex="-1" href="#" class="update_folder" data-id="{{ $folder->id }}" data-url="{{ route('admin_folders_get_modal_update', ['id' => $folder->id]) }}">{{ trans('folders.update_preview_picture') }}</a></li>
         </ul>
     </div>
 </div>

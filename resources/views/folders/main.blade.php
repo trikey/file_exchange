@@ -16,63 +16,35 @@
 
 @include('include.breadcrumbs')
 
-<div class="row">
-    <div class="col-sm-6 col-lg-4">
-        <div class="section-item">
-            <img src="{{ asset('/assets/img/sections/section1.jpg') }}" alt=""/>
-            <a href="#" class="section-link"></a>
-            <div class="section-center">
-                <div class="section-title section-title-white">
-                    <span>Products</span> (56)
+<div class="row" id="folders" data-get-tree-url="{{ route('get_folders_tree') }}">
+    @foreach($folders as $folder)
+        @if(strlen($folder->path) > 0)
+            <div class="col-sm-6 col-lg-4">
+                <div class="section-item context" data-target="#context-menu-{{ $folder->id }}">
+                    <img src="{{ $folder->path }}" alt=""/>
+                    <a href="{{ route('admin_folder_view', ['id' => $folder->id]) }}" class="section-link"></a>
+                    <div class="section-center">
+                        <div class="section-title @if($folder->id == '87') section-title-white @endif">
+                            <span>{{ $folder->name }}</span> ({{ $folder->count }})
+                        </div>
+                    </div>
+                </div>
+                <div id="context-menu-{{ $folder->id }}">
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a tabindex="-1" href="#" class="delete_folder" data-id="{{ $folder->id }}" data-url="{{ route('admin_folders_delete', ['id' => $folder->id]) }}">{{ trans('folders.delete') }}</a></li>
+                        <li><a tabindex="-1" href="#" class="move_folder" data-id="{{ $folder->id }}">{{ trans('folders.move') }}</a></li>
+                        <li><a tabindex="-1" href="#" class="update_folder" data-id="{{ $folder->id }}" data-url="{{ route('admin_folders_get_modal_update', ['id' => $folder->id]) }}">{{ trans('folders.update_preview_picture') }}</a></li>
+                    </ul>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="col-sm-6 col-lg-4">
-        <div class="section-item">
-            <img src="{{ asset('/assets/img/sections/section2.jpg') }}" alt=""/>
-            <a href="#" class="section-link"></a>
-            <div class="section-center">
-                <div class="section-title">
-                    <span>Brandbook</span> (5)
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-6 col-lg-4">
-        <div class="section-item">
-            <img src="{{ asset('/assets/img/sections/section3.jpg') }}" alt=""/>
-            <a href="#" class="section-link"></a>
-            <div class="section-center">
-                <div class="section-title">
-                    <span>Video</span> (2)
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-6 col-lg-4">
-        <div class="section-item">
-            <img src="{{ asset('/assets/img/sections/section4.jpg') }}" alt=""/>
-            <a href="#" class="section-link"></a>
-            <div class="section-center">
-                <div class="section-title">
-                    <span>POSm</span> (2)
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-6 col-lg-4">
-        <div class="section-item">
-            <img src="{{ asset('/assets/img/sections/section5.jpg') }}" alt=""/>
-            <a href="#" class="section-link"></a>
-            <div class="section-center">
-                <div class="section-title">
-                    <span>Events</span> (2)
-                </div>
-            </div>
-        </div>
-    </div>
+        @endif
+    @endforeach
 </div>
 
+@include('folders.tree')
+@include('files.tree')
+
+
+<div id="folder_update_container"></div>
 
 @endsection
