@@ -46,8 +46,8 @@ class Folder extends BaseModel
 
     public function getCountAttribute()
     {
-        $folders = \App\Folder::where('parent_id', '=',  $this->attributes['id'])->pluck('id');
-        $folders[] = $this->attributes['id'];
+        $folders = self::getCategoryChildrenIdsForParentId($this->attributes['id']);
+        $folders[$this->attributes['id']] = $this->attributes['id'];
         return \App\File::whereIn('folder_id', $folders)->count();
     }
 
@@ -185,11 +185,24 @@ class Folder extends BaseModel
     }
 
 
-    public static function getCategoryTreeForParentId($id, &$folders = []) {
+    public static function getCategoryTreeForParentId($id, &$folders = [])
+    {
         $folderings = \App\Folder::where('parent_id', '=', $id)->get();
-        foreach ($folderings as $folder) {
+        foreach ($folderings as $folder)
+        {
             $folders[$folder->id] = ['name' => $folder->name, 'id' => $folder->id, 'url' => $folder->url, 'path' => self::getPath($folder->id)];
             self::getCategoryTreeForParentId($folder['id'], $folders);
+        }
+        return $folders;
+    }
+
+    public static function getCategoryChildrenIdsForParentId($id, &$folders = [])
+    {
+        $folderings = \App\Folder::where('parent_id', '=', $id)->get();
+        foreach ($folderings as $folder)
+        {
+            $folders[$folder->id] = [$folder->id];
+            self::getCategoryChildrenIdsForParentId($folder['id'], $folders);
         }
         return $folders;
     }

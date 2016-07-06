@@ -32,8 +32,8 @@ class FoldersController extends Controller
         $parentFolder = '0';
         $breadcrumbs = [];
         $files = \App\File::FindFilesByFolderId(0)->get();
-        return view($this->index_view, compact('folders', 'parentFolder', 'breadcrumbs', 'files'));
-//        return view('folders.main', compact('folders', 'parentFolder', 'breadcrumbs', 'files'));
+//        return view($this->index_view, compact('folders', 'parentFolder', 'breadcrumbs', 'files'));
+        return view('folders.main', compact('folders', 'parentFolder', 'breadcrumbs', 'files'));
     }
 
     public function viewFolder($id)
