@@ -61,7 +61,7 @@ class UsersController extends Controller
     {
         $model = $this->model;
         $user = $model::find($id);
-        if (Auth::user()->isModerator && ($user->isAdmin || $user->isModerator)) {
+        if ((Auth::user()->isModerator && !$user->isAdmin) && ($user->isAdmin || $user->isModerator)) {
             return redirect($this->list_page);
         }
         return view($this->edit_view, compact('user'));

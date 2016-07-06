@@ -192,6 +192,7 @@ h1 {
   background-size: contain;
   overflow: hidden;
   margin-bottom: 25px;
+    cursor: pointer;
 }
 .big-folder:before {
   content: "";
@@ -961,8 +962,11 @@ h1 {
 }
 .file-action-block {
   float: left;
-  width: 100px;
+  /*width: 100px;*/
+    width: 80px;
 }
 .file-action-block-copy-link {
-  margin-left: 100px;
+  /*margin-left: 100px;*/
+    margin-left: 88px;
+    width: 185px;
 }

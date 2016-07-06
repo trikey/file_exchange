@@ -27,7 +27,7 @@
 <div class="col-sm-4 col-md-3 col-lg-2 folder_container">
 
     <div class="file-item context" id="folder_{{ $folder->id }}" data-target="#context-menu-{{ $folder->id }}">
-        <div class="big-folder"></div>
+        <div class="big-folder" onclick="window.location = '{{ route('admin_folder_view', ['id' => $folder->id]) }}';"></div>
         <a href="{{ route('admin_folder_view', ['id' => $folder->id]) }}" class="folder_name">{{ $folder->name }}</a>
         <input type="text" name="name" value="{{ $folder->name }}" class="folder_rename_input" style="display: none;" data-method="put" data-id="{{ $folder->id }}" data-url="{{route('admin_folders_update', ['id' => $folder->id ])}}"/>
     </div>
