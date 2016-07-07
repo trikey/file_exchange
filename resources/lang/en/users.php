@@ -23,5 +23,13 @@ return [
     'is_moderator' => 'Is moderator?',
     'is_administrator' => 'Is administrator?',
     'yes' => 'yes',
-    'no' => 'no'
+    'no' => 'no',
+    'unconfirmed_users' => 'Pending confirmation',
+    'allow_access' => 'Allow access',
+    'new_user_registered' => 'New user registered on media.redmond.company!',
+    'access_granted' => 'Access granted to media.redmond.company!',
+    'email_hello' => 'Hello!',
+    'email_confirm_info' => 'Доступ на https://media.redmond.company подтвержден!',
+    'user_was_registered' => 'new user was registered on https://media.redmond.company',
+    'please_visit_to_give_access' => 'please visit https://media.redmond.company/users/pending to give access to this user',
 ];

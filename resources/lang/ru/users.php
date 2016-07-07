@@ -23,5 +23,13 @@ return [
     'is_moderator' => 'Является модератором?',
     'is_administrator' => 'Является администратором?',
     'yes' => 'да',
-    'no' => 'нет'
+    'no' => 'нет',
+    'unconfirmed_users' => 'Ожидающие регистрации',
+    'allow_access' => 'Предоставить доступ',
+    'new_user_registered' => 'На media.redmond.company зарегистрирован новый пользователь!',
+    'access_granted' => 'Доступ на media.redmond.company подтвержден!',
+    'email_hello' => 'Добрый день!',
+    'email_confirm_info' => 'Доступ на https://media.redmond.company подтвержден!',
+    'user_was_registered' => 'Зарегистрировался новый пользователь https://media.redmond.company',
+    'please_visit_to_give_access' => 'Посетите https://media.redmond.company/users/pending чтобы подтвердить его регистрацию',
 ];

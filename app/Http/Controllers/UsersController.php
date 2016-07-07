@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Event;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Auth;
+use App\Events\UserConfirmed;
 
 class UsersController extends Controller
 {
@@ -84,5 +86,22 @@ class UsersController extends Controller
             }
         }
         return view($this->index_view, compact('users', 'search'));
+    }
+
+    public function pendingConfirmation()
+    {
+        $model = $this->model;
+        $users = $model::where('canAccess', '0')->where('isModerator', '0')->where('isAdmin', '0')->paginate($this->items_per_page);
+        return view('users.pending', compact('users'));
+    }
+
+    public function confirm($id)
+    {
+        $model = $this->model;
+        $user = $model::find($id);
+        $user->canAccess = 1;
+        $user->save();
+        Event::fire(new UserConfirmed($user));
+        return redirect(route('admin_users_unconfirmed'));
     }
 }

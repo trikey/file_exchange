@@ -60,4 +60,6 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('search', ['as' => 'search', 'uses' => 'FoldersController@search']);
     Route::get('users/search', ['as' => 'users_search', 'uses' => 'UsersController@search']);
+    Route::get('users/pending', ['as' => 'admin_users_unconfirmed', 'uses' => 'UsersController@pendingConfirmation']);
+    Route::put('users/confirm/{id}', ['as' => 'admin_users_confirm', 'uses' => 'UsersController@confirm']);
 });

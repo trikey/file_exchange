@@ -3,6 +3,7 @@
 return [
     'meta_title' => 'REDMOND - File Sharing',
     'main' => 'Index',
-    'thank_you_for_registration' => 'Thank you for registration',
-    'write_to_us' => 'Please, send your email with your login to us to get access for viewing and downloading our files'
+    'thanks_for_register' => 'Thank you for registering!',
+    'thank_you_for_registration' => 'Currently, your account is on moderation.',
+    'write_to_us' => 'After granting access, you will be sent a message that confirms the ability to work with a resource.'
 ];

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use Validator;
+use Event;
+use App\Events\UserRegistered;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
@@ -71,11 +73,13 @@ class AuthController extends BaseController
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'fio' => $data['fio'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'organisation' => $data['organisation']
         ]);
+        Event::fire(new UserRegistered($user));
+        return $user;
     }
 }
