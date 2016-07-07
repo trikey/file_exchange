@@ -276,10 +276,12 @@ class FoldersController extends Controller
         exec('zip -r '.$tmp_zip.' *');
         $filesize = filesize($tmp_zip);
 
-        if ($filesize > 262144000)
+        if ($filesize > 462144000)
         {
+            $this->rmkdir($_SERVER["DOCUMENT_ROOT"]."/temp");
             copy($tmp_zip, $_SERVER["DOCUMENT_ROOT"]."/temp/".$tmp_zip);
-            header('Location: '.$_SERVER["DOCUMENT_ROOT"]."/temp/".$tmp_zip);
+            return redirect("/temp/".$tmp_zip);
+//            header('Location: '.$_SERVER["DOCUMENT_ROOT"]."/temp/".$tmp_zip);
         }
         else
         {
@@ -326,7 +328,7 @@ class FoldersController extends Controller
             exec('zip -r '.$tmp_zip.' *');
             $filesize = filesize($tmp_zip);
 
-            if ($filesize > 262144000)
+            if ($filesize > 462144000)
             {
                 copy($tmp_zip, $_SERVER["DOCUMENT_ROOT"]."/temp/".$tmp_zip);
                 header('Location: '.$_SERVER["DOCUMENT_ROOT"]."/temp/".$tmp_zip);
