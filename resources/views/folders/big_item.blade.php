@@ -36,7 +36,7 @@
             <li><a tabindex="-1" href="#" class="rename_folder" data-id="{{ $folder->id }}">{{ trans('folders.rename') }}</a></li>
             <li><a tabindex="-1" href="#" class="delete_folder" data-id="{{ $folder->id }}" data-url="{{ route('admin_folders_delete', ['id' => $folder->id]) }}">{{ trans('folders.delete') }}</a></li>
             <li><a tabindex="-1" href="#" class="move_folder" data-id="{{ $folder->id }}">{{ trans('folders.move') }}</a></li>
-            <li><a tabindex="-1" href="#" class="update_folder" data-id="{{ $folder->id }}" data-url="{{ route('admin_folders_get_modal_update', ['id' => $folder->id]) }}">{{ trans('folders.update_preview_picture') }}</a></li>
+            {{--<li><a tabindex="-1" href="#" class="update_folder" data-id="{{ $folder->id }}" data-url="{{ route('admin_folders_get_modal_update', ['id' => $folder->id]) }}">{{ trans('folders.update_preview_picture') }}</a></li>--}}
         </ul>
     </div>
 </div>
