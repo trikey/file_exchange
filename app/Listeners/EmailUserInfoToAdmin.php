@@ -33,7 +33,7 @@ class EmailUserInfoToAdmin
         {
             $user = $event->user;
             Mail::send('emails.registered', ['user' => $user], function ($m) use ($admin) {
-                $m->from('info@media.redmond.company', 'info@media.redmond.company');
+                $m->from('media@redmond.company', 'media@redmond.company');
                 $m->to($admin->email, $admin->fio)->subject(trans('users.new_user_registered'));
             });
         }

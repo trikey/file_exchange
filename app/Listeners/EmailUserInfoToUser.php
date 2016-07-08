@@ -30,7 +30,7 @@ class EmailUserInfoToUser
     {
         $user = User::find($event->user->id);
         Mail::send('emails.confirmed', ['user' => $user], function ($m) use ($user) {
-            $m->from('info@media.redmond.company', 'info@media.redmond.company');
+            $m->from('media@redmond.company', 'media@redmond.company');
             $m->to($user->email, $user->fio)->subject(trans('users.access_granted'));
         });
     }

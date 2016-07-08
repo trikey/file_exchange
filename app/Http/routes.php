@@ -62,4 +62,13 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('users/search', ['as' => 'users_search', 'uses' => 'UsersController@search']);
     Route::get('users/pending', ['as' => 'admin_users_unconfirmed', 'uses' => 'UsersController@pendingConfirmation']);
     Route::put('users/confirm/{id}', ['as' => 'admin_users_confirm', 'uses' => 'UsersController@confirm']);
+
+    Route::get('testemail', function() {
+        $user = \App\User::find(3);
+        $res = Mail::send('emails.registered', ['user' => $user], function ($m) use ($user) {
+            $m->from('media@redmond.company', 'media@redmond.company');
+            $m->to('belitskii@gmail.com', $user->fio)->subject(trans('users.new_user_registered'));
+        });
+        dd($res);
+    });
 });

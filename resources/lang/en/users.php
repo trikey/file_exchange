@@ -29,7 +29,7 @@ return [
     'new_user_registered' => 'New user registered on media.redmond.company!',
     'access_granted' => 'Access granted to media.redmond.company!',
     'email_hello' => 'Hello!',
-    'email_confirm_info' => 'Доступ на https://media.redmond.company подтвержден!',
+    'email_confirm_info' => 'Access to https://media.redmond.company granted!',
     'user_was_registered' => 'new user was registered on https://media.redmond.company',
     'please_visit_to_give_access' => 'please visit https://media.redmond.company/users/pending to give access to this user',
 ];
