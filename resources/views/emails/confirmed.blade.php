@@ -2,3 +2,4 @@
 <br/>
 {{ trans('users.email_confirm_info') }}
 <br/><br/>
+login: {{ $user->email }}
