@@ -29,12 +29,21 @@ class EmailUserInfoToAdmin
     public function handle(UserRegistered $event)
     {
         $admins = User::where('isAdmin', 1)->get();
+        $admin_emails = [];
         foreach($admins as $admin)
         {
-            $user = $event->user;
-            Mail::send('emails.registered', ['user' => $user], function ($m) use ($admin) {
+            $admin_emails[] = ['email' => $admin->email, 'fio' => $admin->fio];
+        }
+        $user = $event->user;
+        if (!empty($admin_emails))
+        {
+            Mail::send('emails.registered', ['user' => $user], function ($m) use ($admin_emails) {
                 $m->from('media@redmond.company', 'media@redmond.company');
-                $m->to($admin->email, $admin->fio)->subject(trans('users.new_user_registered'));
+                foreach($admin_emails as $admin_email)
+                {
+                    $m->to($admin_email->email, $admin_email->fio);
+                }
+                $m->subject(trans('users.new_user_registered'));
             });
         }
     }
