@@ -41,7 +41,7 @@ class EmailUserInfoToAdmin
                 $m->from('media@redmond.company', 'media@redmond.company');
                 foreach($admin_emails as $admin_email)
                 {
-                    $m->to($admin_email->email, $admin_email->fio);
+                    $m->to($admin_email['email'], $admin_email['fio']);
                 }
                 $m->subject(trans('users.new_user_registered'));
             });
