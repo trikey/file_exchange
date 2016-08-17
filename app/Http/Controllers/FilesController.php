@@ -39,6 +39,11 @@ class FilesController extends Controller
         return view($this->multi_view);
     }
 
+    public function multiView()
+    {
+        return view('files.multi_popup');
+    }
+
     public function getModal()
     {
         return view('files.file_webix_add');
@@ -52,10 +57,24 @@ class FilesController extends Controller
 
     public function multiHandle(Request $request)
     {
-        dd($request->allFiles());
-        if ($request->file('file')->isValid()) {
-            $file = $request->file('file');
-            $file->move(public_path().'/uploads/'.sha1(time()).'/', sha1(time().time()).".".$file->getClientOriginalExtension());
+        $model = $this->model;
+        $data = $request->all();
+        if ($request->hasFile('file'))
+        {
+            if ($request->file('file')->isValid())
+            {
+                $file = $request->file('file');
+                $fileName = sha1(time().time().rand(1, 9999)).".".$file->getClientOriginalExtension();
+                $path = '/uploads/'.sha1(time().rand(1, 9999)).'/';
+                $file->move(public_path().$path, $fileName);
+                $data['path'] = $path . $fileName;
+                $data['name'] = $fileName;
+                $data['description'] = $fileName;
+
+                $file = new $model($data);
+                $file->save();
+                echo $file->id;
+            }
         }
     }
 

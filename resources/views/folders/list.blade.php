@@ -26,6 +26,9 @@
                 <a href="#" class="btn btn-default add_file" data-url="{{ route('admin_files_get_modal') }}">
                     {{ trans('folders.upload_file') }}
                 </a>
+                <a href="#" class="btn btn-default add_multiple_files" data-url="{{ route('admin_files_multi') }}">
+                    {{ trans('folders.upload_multiple_files') }}
+                </a>
                 @endif
             </div>
         </div>
@@ -51,4 +54,5 @@
 <div id="file_add_contaier"></div>
 <div id="folder_update_container"></div>
 
+<div id="add_multiple_files_contaier"></div>
 @endsection

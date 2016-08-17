@@ -260,7 +260,8 @@
                     _ref = file.previewElement.querySelectorAll("[data-dz-name]");
                     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
                         node = _ref[_i];
-                        node.textContent = this._renameFilename(file.name);
+                        //node.textContent = this._renameFilename(file.name);
+                        node.value = this._renameFilename(file.name);
                     }
                     _ref1 = file.previewElement.querySelectorAll("[data-dz-size]");
                     for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {

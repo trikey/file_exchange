@@ -25,5 +25,6 @@ return [
     'update'            => 'Изменен',
     'update_preview_picture' => 'Изменить',
     'file_is_obligatory_field' => 'Файл и Название являются обязательными полями',
-    'file_update' => 'Загрузить изображение'
+    'file_update' => 'Загрузить изображение',
+    'upload_multiple_files' => 'Загрузить несколько файлов'
 ];

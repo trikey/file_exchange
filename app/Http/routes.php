@@ -49,6 +49,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('files/getmodal', ['as' => 'admin_files_get_modal', 'uses' => 'FilesController@getModal']);
     Route::get('files/getmodal/{id}', ['as' => 'admin_files_get_modal_update', 'uses' => 'FilesController@getModalForUpdate']);
 //    Route::get('files/multi', ['as' => 'admin_files_multi', 'uses' => 'FilesController@multi']);
+    Route::get('files/multi', ['as' => 'admin_files_multi', 'uses' => 'FilesController@multiView']);
     Route::post('files/multi', ['as' => 'admin_files_multi_post', 'uses' => 'FilesController@multiHandle']);
     Route::delete('files/{id}', ['as' => 'admin_files_delete', 'uses' => 'FilesController@destroy']);
 //    Route::get('files/create', ['as' => 'admin_files_create', 'uses' => 'FilesController@create']);

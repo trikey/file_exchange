@@ -25,5 +25,6 @@ return [
     'update'            => 'Update',
     'update_preview_picture' => 'Update',
     'file_is_obligatory_field' => 'File and Name are obligatory fields',
-    'file_update' => 'Upload an image'
+    'file_update' => 'Upload an image',
+    'upload_multiple_files' => 'Upload Multiple Files'
 ];
