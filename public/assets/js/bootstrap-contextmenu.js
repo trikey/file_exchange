@@ -16,6 +16,7 @@
     /* CONTEXTMENU CLASS DEFINITION
      * ============================ */
     var toggle = '[data-toggle="context"]';
+    var elems = new Array();
 
     var ContextMenu = function (element, options) {
         this.$element = $(element);
@@ -27,7 +28,7 @@
         if (options.target) {
             this.$element.data('target', options.target);
         }
-
+        elems.push(this);
         this.listen();
     };
 
@@ -43,7 +44,10 @@
                 , relatedTarget = { relatedTarget: this, target: e.currentTarget };
 
             if (this.isDisabled()) return;
-
+            for(var i in elems)
+            {
+                elems[i].closemenu();
+            }
             this.closemenu();
 
             if (this.before.call(this,e,$(e.currentTarget)) === false) return;
