@@ -6,3 +6,9 @@ Homestead.json
 .env
 /public/uploads/*
 /.idea
+/public/assets/js/client.js
+/public/assets/js/client.js.map
+/public/assets/js/file_upload.js
+/public/assets/js/file_upload.js.map
+/public/assets/js/script.js
+/public/assets/js/script.js.map
