@@ -15,7 +15,8 @@
                         'class' => 'dropzone',
                         'id' => 'dropzone',
                         'novalidate' => 'novalidate',
-                        'files' => true)) !!}
+                        'files' => true,
+                        'url' => route('admin_files_multi_post'))) !!}
 
 
 

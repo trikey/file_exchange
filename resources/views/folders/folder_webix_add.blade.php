@@ -28,7 +28,7 @@
 --}}
 <div id="clone_folder" style="display: none;">
     <div class="col-sm-4 col-md-3 col-lg-2 folder_container">
-        <div class="file-item context"">
+        <div class="file-item context">
             <div class="big-folder"></div>
             <a href="#" class='folder_name' style="display: none;">{{ trans('folders.new_folder') }}</a>
             <input type="text" name="name" value="Новая папка" class="folder_rename_input" data-method="post" data-url="{{route('admin_folders_store')}}"/>

@@ -26,6 +26,7 @@
     <link href="{{ asset('/assets/css/custom-style.css') }}" rel="stylesheet">
 
     <script type="text/javascript" src="{{ asset('/assets/js/jquery/jquery-1.10.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/vue.min.js') }}"></script>
 
     <!-- csrf protection -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -76,13 +77,13 @@
     <script type="text/javascript" src="{{ asset('/assets/bootstrap-treeview/js/bootstrap-treeview.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/dropzone.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/bootstrap-contextmenu.js?'.time()) }}"></script>
-    <script type="text/javascript" src="{{ asset('/assets/js/client.js?'.time()) }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/js/client_vue.js?'.time()) }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/clipboard.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/dom.js?'.time()) }}"></script>
     @if(!Auth::guest())
         @if(Auth::user()->isAdmin || Auth::user()->isModerator)
             <script type="text/javascript" src="{{ asset('/assets/js/jquery.form.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('/assets/js/script.js?'.time()) }}"></script>
+            <script type="text/javascript" src="{{ asset('/assets/js/script_vue.js?'.time()) }}"></script>
         @endif
     @endif
 </body>

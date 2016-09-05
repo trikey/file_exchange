@@ -51,8 +51,8 @@
 @include('files.tree')
 
 
-<div id="file_add_contaier"></div>
+<div id="file_add_contaier">@include('files.file_webix_add')</div>
 <div id="folder_update_container"></div>
 
-<div id="add_multiple_files_contaier"></div>
+<div id="add_multiple_files_contaier">@include('files.multi_popup')</div>
 @endsection
