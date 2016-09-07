@@ -16,3 +16,4 @@ Homestead.json
 /public/assets/js/script_vue.js.map
 /public/assets/js/client_vue.js
 /public/assets/js/client_vue.js.map
+/public/build/*
