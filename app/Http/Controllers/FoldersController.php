@@ -27,13 +27,13 @@ class FoldersController extends Controller
 
     public function index()
     {
+        return view('folders.main');
+    }
+    public function main()
+    {
         $model = $this->model;
         $folders = $model::FindRootFolders()->get();
-        $parentFolder = '0';
-        $breadcrumbs = [];
-        $files = \App\File::FindFilesByFolderId(0)->get();
-//        return view($this->index_view, compact('folders', 'parentFolder', 'breadcrumbs', 'files'));
-        return view('folders.main', compact('folders', 'parentFolder', 'breadcrumbs', 'files'));
+        return response()->json($folders);
     }
 
     public function viewFolder($id)

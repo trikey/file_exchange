@@ -58,7 +58,7 @@ class Folder extends BaseModel
 
     public function getUrlAttribute()
     {
-        return $this->attributes['url'] = route('admin_folder_view', ['id' => $this->attributes['id']]);
+        return $this->attributes['url'] = $this->attributes['id'];
     }
 
     public function getTextAttribute()

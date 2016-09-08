@@ -2,7 +2,8 @@ var path = require('path');
 
 module.exports = {
     entry: {
-        app: path.join(__dirname, 'resources', 'assets', 'vue', 'index.coffee'),
+        admin: path.join(__dirname, 'resources', 'assets', 'vue', 'admin', 'admin.coffee'),
+        client: path.join(__dirname, 'resources', 'assets', 'vue', 'client', 'client.coffee'),
     },
 
     output: {
@@ -16,12 +17,16 @@ module.exports = {
             {
                 test: /\.coffee$/,
                 loader: 'coffee',
+            },
+            {
+                test: /\.vue$/,
+                loader: 'vue',
             }
         ]
 
     },
 
     resolve: {
-        extensions: ['', '.js', '.coffee']
+        extensions: ['', '.js', '.coffee', '.vue']
     }
 };
