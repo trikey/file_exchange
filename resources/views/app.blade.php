@@ -11,21 +11,14 @@
     <meta name="description" content="@yield('meta_description')" />
 
 
-    <!--[if lt IE 9]>
-    <script src="{{ asset('/assets/js/html5shiv.js') }}"></script>
-    <script src="{{ asset('/assets/js/respond.min.js') }}"></script>
-    <![endif]-->
-
 
     <link href="{{ asset('/assets/bootstrap-less/css/bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('/assets/bootstrap-treeview/css/bootstrap-treeview.css') }}" rel="stylesheet">
     <link href="{{ asset('/assets/css/dropzone.css') }}" rel="stylesheet">
     <link href="{{ asset('/assets/css/filemanager.css') }}" rel="stylesheet">
-<!--    <link href="{{ asset('/assets/css/webix.css') }}" rel="stylesheet">-->
     <link href="{{ asset('/assets/css/style.css?345345') }}" rel="stylesheet">
     <link href="{{ asset('/assets/css/custom-style.css') }}" rel="stylesheet">
 
-    <script type="text/javascript" src="{{ asset('/assets/js/jquery/jquery-1.10.1.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/assets/js/vue.min.js') }}"></script>
 
     <!-- csrf protection -->
@@ -73,12 +66,12 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="{{ asset('/assets/bootstrap/js/bootstrap.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/assets/bootstrap-treeview/js/bootstrap-treeview.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/assets/js/dropzone.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/assets/js/bootstrap-contextmenu.js?'.time()) }}"></script>
+    {{--<script type="text/javascript" src="{{ asset('/assets/bootstrap/js/bootstrap.min.js') }}"></script>--}}
+    {{--<script type="text/javascript" src="{{ asset('/assets/bootstrap-treeview/js/bootstrap-treeview.js') }}"></script>--}}
+    {{--<script type="text/javascript" src="{{ asset('/assets/js/dropzone.js') }}"></script>--}}
+    {{--<script type="text/javascript" src="{{ asset('/assets/js/bootstrap-contextmenu.js?'.time()) }}"></script>--}}
     <script type="text/javascript" src="{{ asset('/assets/js/client_vue.js?'.time()) }}"></script>
-    <script type="text/javascript" src="{{ asset('/assets/js/clipboard.min.js') }}"></script>
+    {{--<script type="text/javascript" src="{{ asset('/assets/js/clipboard.min.js') }}"></script>--}}
     <script type="text/javascript" src="{{ asset('/assets/js/dom.js?'.time()) }}"></script>
     @if(!Auth::guest())
         @if(Auth::user()->isAdmin || Auth::user()->isModerator)
