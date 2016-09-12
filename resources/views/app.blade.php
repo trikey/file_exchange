@@ -21,9 +21,9 @@
 
 
     <!-- csrf protection -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
 </head>
-<body class="lang_{{ App::getLocale() }} @if(Auth::guest()) login-bg @endif">
+<body class="lang_{{ App::getLocale() }} @if(Auth::guest()) login-bg @endif" data-lang="{{ App::getLocale() }}">
     <div class="header">
         <div class="container-fluid">
             <div class="menu-icon visible-xs-inline-block visible-sm-inline-block visible-md-inline-block">

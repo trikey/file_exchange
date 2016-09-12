@@ -10,7 +10,10 @@ Vue.use(VueRouter)
 Vue.use(VueI18n)
 
 Vue.use(VueI18n)
-Vue.locale('en', Locales.en)
+lang = document.querySelector('body').getAttribute('data-lang')
+Vue.locale('en', Locales[lang])
+
+Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('#token').getAttribute('content');
 
 router = new VueRouter()
 app = Vue.extend({})

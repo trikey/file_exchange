@@ -33,6 +33,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::group(['prefix' => 'api'], function() {
 
         Route::get('/', 'FoldersController@main');
+        Route::get('/tree', 'FoldersController@getTree');
 
         Route::delete('folders/{id}', ['as' => 'admin_folders_delete', 'uses' => 'FoldersController@destroy']);
         Route::post('folders/create', ['as' => 'admin_folders_store', 'uses' => 'FoldersController@store']);
