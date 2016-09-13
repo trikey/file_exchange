@@ -1,5 +1,5 @@
 var path = require('path');
-
+var webpack = require('webpack');
 module.exports = {
     entry: {
         admin: path.join(__dirname, 'resources', 'assets', 'vue', 'admin', 'admin.coffee'),
@@ -27,6 +27,13 @@ module.exports = {
     },
 
     resolve: {
-        extensions: ['', '.js', '.coffee', '.vue']
-    }
+        extensions: ['', '.js', '.coffee', '.vue'],
+        alias: {
+            _admin: path.join(__dirname, 'resources', 'assets', 'vue', 'admin')
+        }
+    },
+
+    plugins: [
+        new webpack.OldWatchingPlugin()
+    ]
 };
