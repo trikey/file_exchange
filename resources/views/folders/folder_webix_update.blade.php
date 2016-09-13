@@ -52,4 +52,4 @@
 
     </div>
 </div>
-<script type="text/javascript" src="{{ asset('/assets/js/file_upload.js?'.time()) }}"></script>
+{{--<script type="text/javascript" src="{{ asset('/assets/js/file_upload.js?'.time()) }}"></script>--}}

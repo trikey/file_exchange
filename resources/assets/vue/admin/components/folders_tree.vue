@@ -8,10 +8,11 @@
                 <h4 class="modal-title">{{ $t('folders.select_section') }}</h4>
             </div>
             <div class="modal-body" id="tree">
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">{{ $t('folders.close') }}</button>
-                <button type="button" class="btn btn-primary select_category">{{ $t('folders.select') }}</button>
+                <button type="button" class="btn btn-primary select_category" @click="moveFolder($event)">{{ $t('folders.select') }}</button>
             </div>
         </div>
 
@@ -20,6 +21,11 @@
 </template>
 <script type="text/coffeescript" lang="coffee">
     Vue = require('vue')
-    FoldersTree = Vue.extend({})
+    FoldersTree = Vue.extend
+        props: ['folder', 'parentid']
+        methods:
+            moveFolder: (e) ->
+                this.$http.post("/api/folders/#{this.folder.id}/edit", { _method: 'put', parent_id: this.parentid, is_ajax: 'Y' }).then (response) =>
+                    window.location.reload()
     module.exports = FoldersTree
 </script>

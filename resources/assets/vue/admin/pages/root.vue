@@ -27,14 +27,14 @@
                 <ul class="dropdown-menu" role="menu">
                     <li><a tabindex="-1" href="#" @click.prevent="deleteFolder(folder, $event)">{{ $t('folders.delete') }}</a></li>
                     <li><a tabindex="-1" href="#" @click.prevent="moveFolder(folder, $event)">{{ $t('folders.move') }}</a></li>
-                    <li><a tabindex="-1" href="#" class="update_folder">{{ $t('folders.update_preview_picture') }}</a></li>
+                    <li><a tabindex="-1" href="#" @click.prevent="updateFolder(folder, $event)" class="update_folder">{{ $t('folders.update_preview_picture') }}</a></li>
                 </ul>
             </div>
         </div>
 
     </div>
 
-    <folderstree></folderstree>
+    <folderstree :folder="selectedFolder" :parentid="curParentId"></folderstree>
     <filestree></filestree>
 
 
@@ -53,6 +53,7 @@
         data: ->
             folders: []
             curParentId: 0
+            selectedFolder: {}
         components:
             searchform: SearchForm
             folderstree: FoldersTree
@@ -68,11 +69,18 @@
                 this.$http.post("/api/folders/#{folder.id}", { _method: 'delete' }).then (response) =>
                     console.log 'worked'
             moveFolder: (folder, e) ->
+                this.selectedFolder = folder
                 $("[data-target=context-menu-#{folder.id}]").contextmenu('close', e)
                 this.$http.get('/api/tree').then (response) =>
                     $('#tree').treeview
                         data: response.data
-                        onNodeSelected: (event, data) ->
-                            self.curParentId = data.id
+                        onNodeSelected: (event, data) =>
+                            this.curParentId = data.id
                     $('#treeModal').modal('show')
+            updateFolder: (folder, e) ->
+                this.selectedFolder = folder
+                $("[data-target=context-menu-#{folder.id}]").contextmenu('close', e)
+                this.$http.get("/api/modal/#{folder.id}").then (response) =>
+                    $('#folder_update_container').html(response.data);
+                    $('#folderModal').modal('show')
 </script>

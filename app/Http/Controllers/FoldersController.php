@@ -125,7 +125,7 @@ class FoldersController extends Controller
         $folder = $model::findOrFail($id);
 
         $folder->update($request->all());
-        return view($this->item_view, compact('folder'));
+//        return view($this->item_view, compact('folder'));
 //        return redirect($this->list_page);
     }
 
