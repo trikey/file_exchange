@@ -163,7 +163,8 @@ class FoldersController extends Controller
     {
         $class = $this->model;
         $folder = $class::find($id);
-        return view('folders.folder_webix_update', compact('folder'));
+        return response()->json($folder);
+//        return view('folders.folder_webix_update', compact('folder'));
     }
 
     public function edit($id)

@@ -11,14 +11,14 @@
     </div>
 
     <div class="row" id="folders">
-        <folder v-for="folder in folders" v-show="folder.path" :folder="folder" @deleted="onDeleted" @moved="onMoved"></folder>
+        <folder v-for="folder in folders" v-show="folder.path" :folder="folder" @deleted="onDeleted" @moved="onMoved" @prepared-for-update="onPreparedForUpdate"></folder>
     </div>
 
     <folderstree :folder="selectedFolder" :folders-tree="foldersTree" @hidden-bs-modal="onHiddenBsModal"></folderstree>
-    <filestree></filestree>
 
 
-    <div id="folder_update_container"></div>
+    <folder-update-popup :folder="selectedFolderForUpdate"></folder-update-popup>
+
 
 </template>
 
@@ -26,8 +26,8 @@
     Vue = require('vue')
     SearchForm = require('_admin/components/search_form')
     FoldersTree = require('_admin/components/folders_tree')
-    FilesTree = require('_admin/components/files_tree')
     Folder = require('_admin/components/folder')
+    FolderUpdatePopup = require('_admin/components/folder_update_popup')
 
     module.exports = Vue.extend
         created: ->
@@ -35,12 +35,13 @@
         data: ->
             folders: []
             selectedFolder: null,
-            foldersTree: null
+            selectedFolderForUpdate: null
+            foldersTree: null,
         components:
             searchform: SearchForm
             folderstree: FoldersTree
-            filestree: FilesTree
             folder: Folder
+            'folder-update-popup': FolderUpdatePopup
         methods:
             getRootFolders: ->
                 this.$http.get('/api').then (response) =>
@@ -54,4 +55,7 @@
             onHiddenBsModal: ->
                 this.foldersTree = null
                 this.selectedFolder = null
+
+            onPreparedForUpdate: (folder) ->
+                this.selectedFolderForUpdate = folder
 </script>

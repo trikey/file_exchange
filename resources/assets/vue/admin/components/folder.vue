@@ -34,8 +34,7 @@
         methods:
             deleteFolder: (e) ->
                 this.$emit 'deleted', this.folder
-                this.$http.post("/api/folders/#{this.folder.id}", { _method: 'delete' }).then (response) =>
-                    console.log 'worked'
+                this.$http.post("/api/folders/#{this.folder.id}", { _method: 'delete' })
             moveFolder: (e) ->
                 this.selectedFolder = this.folder
                 this.$refs.contextMenu.close()
@@ -44,9 +43,8 @@
             updateFolder: (e) ->
                 this.selectedFolder = this.folder
                 this.$refs.contextMenu.close()
-
                 this.$http.get("/api/modal/#{this.folder.id}").then (response) =>
-                    $('#folder_update_container').html(response.data);
-                    $('#folderModal').modal('show')
+                    this.$emit 'prepared-for-update', response.data
+
     module.exports = FoldersTree
 </script>
