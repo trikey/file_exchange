@@ -2,12 +2,14 @@ Vue = require('vue')
 VueResource = require('vue-resource')
 VueRouter = require('vue-router')
 VueI18n = require('vue-i18n')
+VueValidator = require('vue-validator')
 
 Locales = require('../vue-i18n-locales.generated')
 
 Vue.use(VueResource)
 Vue.use(VueRouter)
 Vue.use(VueI18n)
+Vue.use(VueValidator)
 
 Vue.use(VueI18n)
 lang = document.querySelector('body').getAttribute('data-lang')

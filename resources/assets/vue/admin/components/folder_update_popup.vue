@@ -4,6 +4,7 @@
 
         <div id="folderModal" class="modal fade" role="dialog">
             <div class="modal-dialog">
+                <validator name="validation1">
 
                 <div class="modal-content">
                     <div class="modal-header">
@@ -14,18 +15,19 @@
 
                         <form class="form" novalidate="novalidate" enctype="multipart/form-data" id="file_upload_form" method="post">
                             <input name="_method" type="hidden" value="PUT">
+
                             <div class="form-group upload-file">
                                 <label for="{{ $t('files.select_file') }}">{{ $t('files.select_file') }}</label>
-                                <input v-el:image id="file" name="file" type="file" v-model="file">
+                                <input v-el:image id="file" name="file" type="file" v-model="file" v-validate:file="['required']">
                             </div>
 
                             <div class="form-group">
                                 <label for="{{ $t('folders.name') }}">{{ $t('folders.name') }}</label>
-                                <input placeholder="" class="form-control" id="file_name" name="name" type="text" v-model="folderName">
+                                <input placeholder="" class="form-control" id="name" type="text" v-model="folderName" v-validate:name="['required']">
                             </div>
 
-                            <ul class="text-danger" id="file-errors" v-show="folderName == null || file == null || folderName.length == 0">
-                                <li>{{ $t('folders.file_is_obligatory_field') }}</li>
+                            <ul class="text-danger" id="file-errors">
+                                <li v-if="$validation1.name.required || $validation1.file.required ">{{ $t('folders.file_is_obligatory_field') }}</li>
                             </ul>
                         </form>
 
@@ -38,9 +40,10 @@
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default close_file_upload" data-dismiss="modal">{{ $t('files.close') }}</button>
-                        <button type="button" @click.prevent="onSubmit" class="btn btn-primary save_file">{{ $t('files.upload') }}</button>
+                        <button type="button" @click.prevent="onSubmit" class="btn btn-primary save_file" v-if="$validation1.valid">{{ $t('files.upload') }}</button>
                     </div>
                 </div>
+                </validator>
 
             </div>
         </div>
