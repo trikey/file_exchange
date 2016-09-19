@@ -45,7 +45,8 @@ class FoldersController extends Controller
         $breadcrumbs = $model::getParent($id, [['id' => $folder->id, 'name' => $folder->name, 'url' => $folder->url]]);
 
         $files = \App\File::FindFilesByFolderId($id)->get();
-        return view($this->index_view, compact('folders', 'parentFolder', 'breadcrumbs', 'files'));
+        return response()->json(['folders' => $folders, 'files' => $files]);
+//        return view($this->index_view, compact('folders', 'parentFolder', 'breadcrumbs', 'files'));
     }
 
 
@@ -113,7 +114,8 @@ class FoldersController extends Controller
         $model = $this->model;
         $folder = new $model($request->all());
         $folder->save();
-        return view($this->item_view, compact('folder'));
+        return response()->json($folder);
+//        return view($this->item_view, compact('folder'));
 
 //        return redirect($this->list_page);
     }
@@ -125,6 +127,7 @@ class FoldersController extends Controller
         $folder = $model::findOrFail($id);
 
         $folder->update($request->all());
+        return response()->json($folder);
 //        return view($this->item_view, compact('folder'));
 //        return redirect($this->list_page);
     }

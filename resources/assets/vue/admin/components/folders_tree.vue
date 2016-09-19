@@ -34,7 +34,7 @@
                 this.$emit 'hidden-bs-modal'
         methods:
             moveFolder: (e) ->
-                this.$http.post("/api/folders/#{this.folder.id}/edit", { _method: 'put', parent_id: this.parentid, is_ajax: 'Y' }).then (response) =>
+                this.$http.post("/api/folders/#{this.folder.id}/edit", { _method: 'put', parent_id: this.curParentId, is_ajax: 'Y' }).then (response) =>
                     window.location.reload()
             showTree: ->
                 $(this.$el).modal('show')

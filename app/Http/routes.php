@@ -30,11 +30,15 @@ Route::group(['middleware' => 'web'], function () {
 
 
     Route::get('folders', ['as' => 'admin_folders', 'uses' => 'FoldersController@index']);
+    Route::get('/download/folder/{id}', 'FoldersController@downloadAll');
     Route::group(['prefix' => 'api'], function() {
 
         Route::get('/', 'FoldersController@main');
+        Route::get('/user', 'UsersController@getUser');
         Route::get('/tree', 'FoldersController@getTree');
+        Route::get('/{id}', 'FoldersController@viewFolder');
         Route::get('/modal/{id}', 'FoldersController@getModalForUpdate');
+
 
         Route::delete('folders/{id}', ['as' => 'admin_folders_delete', 'uses' => 'FoldersController@destroy']);
         Route::post('folders/create', ['as' => 'admin_folders_store', 'uses' => 'FoldersController@store']);

@@ -104,4 +104,9 @@ class UsersController extends Controller
         Event::fire(new UserConfirmed($user));
         return redirect(route('admin_users_unconfirmed'));
     }
+
+    public function getUser()
+    {
+        return response()->json(Auth::user());
+    }
 }
