@@ -26,7 +26,7 @@ router.map(
             name: 'root',
             component: require('./pages/root')
         },
-        '/folders/:id': {
+        '/:id': {
             name: 'folder',
             component: require('./pages/folder')
         }

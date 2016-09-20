@@ -3,7 +3,7 @@
     <div class="col-sm-4 col-md-3 col-lg-2 folder_container">
 
         <div class="file-item context" data-target="#folder-context-menu-{{ folder.id }}">
-            <div class="big-folder"></div>
+            <div v-link="{name: 'folder', params: { id: folder.id }}" class="big-folder"></div>
             <a v-link="{name: 'folder', params: { id: folder.id }}" class="folder_name" v-show="folder.id">{{ name }}</a>
             <input type="text" name="name" v-model="name" class="folder_rename_input" v-on:blur="onBlur($event, folder)" v-show="folder.id == undefined" />
         </div>
@@ -13,9 +13,7 @@
             <li><a tabindex="-1" href="#" @click.prevent="moveFolder($event)">{{ $t('folders.move') }}</a></li>
             <li><a tabindex="-1" href="#" @click.prevent="renameFolder($event)">{{ $t('folders.rename') }}</a></li>
         </context-menu>
-
     </div>
-
 </template>
 
 

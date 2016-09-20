@@ -45,7 +45,7 @@ class FoldersController extends Controller
         $breadcrumbs = $model::getParent($id, [['id' => $folder->id, 'name' => $folder->name, 'url' => $folder->url]]);
 
         $files = \App\File::FindFilesByFolderId($id)->get();
-        return response()->json(['folders' => $folders, 'files' => $files]);
+        return response()->json(['folders' => $folders, 'files' => $files, 'breadcrumbs' => $breadcrumbs]);
 //        return view($this->index_view, compact('folders', 'parentFolder', 'breadcrumbs', 'files'));
     }
 

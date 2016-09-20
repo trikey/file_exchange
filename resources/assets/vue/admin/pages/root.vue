@@ -10,6 +10,8 @@
         </div>
     </div>
 
+    <breadcrumbs :breadcrumbs="breadcrumbs"></breadcrumbs>
+
     <div class="row" id="folders">
         <folder v-for="folder in folders" v-show="folder.path" :folder="folder" @deleted="onDeleted" @moved="onMoved" @prepared-for-update="onPreparedForUpdate"></folder>
     </div>
@@ -28,6 +30,7 @@
     FoldersTree = require('_admin/components/folders_tree')
     Folder = require('_admin/components/folder')
     FolderUpdatePopup = require('_admin/components/folder_update_popup')
+    Breadcrumbs = require('_admin/components/breadcrumbs')
 
     module.exports = Vue.extend
         created: ->
@@ -37,10 +40,12 @@
             selectedFolder: null,
             selectedFolderForUpdate: null
             foldersTree: null,
+            breadcrumbs: []
         components:
             searchform: SearchForm
             folderstree: FoldersTree
             folder: Folder
+            breadcrumbs: Breadcrumbs
             'folder-update-popup': FolderUpdatePopup
         methods:
             getRootFolders: ->

@@ -2,10 +2,10 @@
     <a href="/download/folder/{{ parentId }}" target="_blank" class="btn btn-default download-all">
         {{ $t('folders.download_all') }}
     </a>
-    <a href="#" class="btn btn-default add_folder" v-if="user.isAdmin || user.isModerator" @click.prevent="addFolder($event)">
+    <a href="#" class="btn btn-default add_folder" v-if="(user.isAdmin || user.isModerator) && readyToAddFolder" @click.prevent="addFolder($event)">
         {{ $t('folders.add_folder') }}
     </a>
-    <a href="#" class="btn btn-default add_file" v-if="user.isAdmin || user.isModerator">
+    <a href="#" class="btn btn-default add_file" v-if="user.isAdmin || user.isModerator" @click.prevent="addFile($event)">
         {{ $t('folders.upload_file') }}
     </a>
     <a href="#" class="btn btn-default add_multiple_files" v-if="user.isAdmin || user.isModerator">
@@ -15,11 +15,12 @@
 <script type="text/coffeescript" lang="coffee">
     Vue = require('vue')
     module.exports = Vue.extend
-        props: ['user', 'parentId']
+        props: ['user', 'parentId', 'readyToAddFolder']
         methods:
             addFolder: (e) ->
                 this.$emit 'folder-html-added', this.parentId
-            addFile: ->
+            addFile: (e) ->
+                this.$emit 'file-html-added', this.parentId
             addMultipleFiles: ->
 
 </script>
