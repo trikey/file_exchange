@@ -1,7 +1,6 @@
 <template>
-    <div id="file_add_contaier">
 
-        <div id="filesModal" class="modal fade" role="dialog">
+        <div id="file_add_contaier" class="modal fade" role="dialog">
             <div class="modal-dialog">
                 <validator name="fileupload">
 
@@ -50,7 +49,6 @@
         </div>
 
 
-    </div>
 
 </template>
 
@@ -61,9 +59,12 @@
         data: ->
             file: null
             description: null
+        ready: ->
+            $(this.$el).on 'hidden.bs.modal', =>
+                this.$emit 'hidden-bs-modal'
         methods:
             showPopup: ->
-                $(this.$el).find('[role=dialog]').modal('show')
+                $(this.$el).modal('show')
             onSubmit: (e) ->
                 formData = new FormData()
                 formData.append('file', this.$els.image.files[0], this.$els.image.files[0].name)

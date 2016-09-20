@@ -8,7 +8,7 @@
     <a href="#" class="btn btn-default add_file" v-if="user.isAdmin || user.isModerator" @click.prevent="addFile($event)">
         {{ $t('folders.upload_file') }}
     </a>
-    <a href="#" class="btn btn-default add_multiple_files" v-if="user.isAdmin || user.isModerator">
+    <a href="#" class="btn btn-default add_multiple_files" v-if="user.isAdmin || user.isModerator" @click.prevent="addMultipleFiles($event)">
         {{ $t('folders.upload_multiple_files') }}
     </a>
 </template>
@@ -21,6 +21,6 @@
                 this.$emit 'folder-html-added', this.parentId
             addFile: (e) ->
                 this.$emit 'file-html-added', this.parentId
-            addMultipleFiles: ->
-
+            addMultipleFiles: (e) ->
+                this.$emit 'multiple-file-html-added', this.parentId
 </script>

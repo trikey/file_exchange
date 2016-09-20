@@ -133,7 +133,7 @@ class FilesController extends Controller
         if ($fileChanged) {
             return trans('files.file_updated');
         }
-        return view($this->item_view, compact('file'));
+//        return view($this->item_view, compact('file'));
 //        return redirect($this->list_page);
     }
 

@@ -8,7 +8,7 @@
                 <h1>{{ $t('folders.files_and_folders') }}</h1>
             </div>
             <div class="col-sm-6 right-text">
-                <admin-menu :user="user" :parent-id="parentFolderId" :ready-to-add-folder="readyToAddFolder" @folder-html-added="onFolderHtmlAdded" @file-html-added="onFileHtmlAdded"></admin-menu>
+                <admin-menu :user="user" :parent-id="parentFolderId" :ready-to-add-folder="readyToAddFolder" @folder-html-added="onFolderHtmlAdded" @file-html-added="onFileHtmlAdded" @multiple-file-html-added="onMultipleFileHtmlAdded"></admin-menu>
             </div>
         </div>
     </div>
@@ -24,7 +24,8 @@
     <folders-tree :folder="selectedFolder" :folders-tree="foldersTree" @hidden-bs-modal="onHiddenBsModal"></folders-tree>
 
 
-    <file-add-popup :parent-id="selectedParentId"></file-add-popup>
+    <file-add-popup :parent-id="selectedParentId" @hidden-bs-modal="onHiddenBsModal"></file-add-popup>
+    <multiple-files-add-popup :parent-id="selectedParentIdForMultiple" @hidden-bs-modal="onHiddenBsModal"></multiple-files-add-popup>
 
 </template>
 <script type="text/coffeescript" lang="coffee">
@@ -37,6 +38,7 @@
     AdminMenu = require('_admin/components/admin_menu')
     Breadcrumbs = require('_admin/components/breadcrumbs')
     FileAddPopup = require('_admin/components/file_add_popup')
+    MultipleFilesAddPopup = require('_admin/components/multiple_files_add_popup')
 
     module.exports = Vue.extend
         created: ->
@@ -52,7 +54,8 @@
             parentFolderId: this.$route.params.id,
             breadcrumbs: [],
             readyToAddFolder: true,
-            selectedParentId: null
+            selectedParentId: null,
+            selectedParentIdForMultiple: null
         route:
             data: (transition) ->
                 this.getFolderAndFiles(this.$route.params.id)
@@ -64,6 +67,7 @@
             'admin-menu': AdminMenu
             'breadcrumbs': Breadcrumbs,
             'file-add-popup': FileAddPopup
+            'multiple-files-add-popup': MultipleFilesAddPopup
         methods:
             getUser: ->
                 this.$http.get('api/user').then (response) =>
@@ -92,9 +96,12 @@
             onHiddenBsModal: ->
                 this.foldersTree = null
                 this.selectedFolder = null
-
+                this.selectedParentId = null
+                this.selectedParentIdForMultiple = null
             onPreparedForUpdate: (folder) ->
                 this.selectedFolderForUpdate = folder
             onFileHtmlAdded: (parentFolderId) ->
                 this.selectedParentId = parentFolderId
+            onMultipleFileHtmlAdded: (parentFolderId) ->
+                this.selectedParentIdForMultiple = parentFolderId
 </script>
