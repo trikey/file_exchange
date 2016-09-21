@@ -53,7 +53,7 @@ class FoldersController extends Controller
     public function filebox()
     {
         $folders = [];
-        $breadcrumbs = [['name' => trans('menu.basket'), 'url' => route('filebox')]];
+        $breadcrumbs = [['name' => trans('menu.basket'), 'url' => 'filebox']];
         $parentFolder = '0';
         $files = [];
         $file_box = session('file_box');
@@ -61,8 +61,8 @@ class FoldersController extends Controller
         {
             $files = \App\File::whereIn('id', $file_box)->get();
         }
-
-        return view('folders.filebox', compact('folders', 'parentFolder', 'breadcrumbs', 'files'));
+        return response()->json(compact('breadcrumbs', 'files'));
+//        return view('folders.filebox', compact('folders', 'parentFolder', 'breadcrumbs', 'files'));
     }
 
     public function addToFileBox($id)
@@ -77,7 +77,8 @@ class FoldersController extends Controller
             $file_box = [$id => $id];
         }
         session(['file_box' => $file_box]);
-        return view('include.menu2');
+        return response()->json(['count' => count(session('file_box'))]);
+//        return view('include.menu2');
     }
 
     public function removeFromFileBox($id)
@@ -92,7 +93,8 @@ class FoldersController extends Controller
             $file_box = [];
         }
         session(['file_box' => $file_box]);
-        return view('include.menu2');
+        return response()->json(['count' => count(session('file_box'))]);
+//        return view('include.menu2');
     }
 
     public function getTree()

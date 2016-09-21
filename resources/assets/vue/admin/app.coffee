@@ -30,6 +30,10 @@ router.map(
         '/:id': {
             name: 'folder',
             component: require('./pages/folder')
+        },
+        '/filebox': {
+            name: 'filebox',
+            component: require('./pages/filebox')
         }
     }
 )

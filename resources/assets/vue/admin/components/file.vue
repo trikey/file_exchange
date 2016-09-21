@@ -1,11 +1,11 @@
 <template>
 
     <div class="col-sm-4 col-md-3 col-lg-2 folder_container">
-        <div class="file-item file-item-info context" data-target="#file-context-menu-{{ file.id }}">
+        <div class="file-item file-item-info context" data-target="#file-context-menu-{{ file.id }}" @click.prevent="showFileInfo($event)">
             <div v-if="['jpg', 'jpeg', 'png'].indexOf(file.type) != -1" class="big-file icon-big-file icon-big-file-img" v-bind:style="{ 'background-image': 'url(' + file.path + ')' }"></div>
             <div v-else class="big-file icon-big-file icon-big-file-{{ file.type.toLowerCase() }}"></div>
             <a href="/files/{{ file.id }}" class="folder_name">{{ file.description }}</a>
-            <textarea name="description" class="folder_rename_input" v-show="1 == false" v-model="description"></textarea>
+            <textarea name="description" class="folder_rename_input" v-show="false" v-on:blur="onBlur($event)" v-model="description"></textarea>
         </div>
 
 
@@ -36,5 +36,19 @@
             moveFile: (e) ->
                 this.$refs.contextMenu.close()
                 this.$emit 'moved-file', this.file
-
+            renameFile: (e) ->
+                this.$refs.contextMenu.close()
+                $(this.$el).find('.folder_name').hide()
+                $(this.$el).find('.folder_rename_input').show()
+            onBlur: (e) ->
+                this.$http.post("/api/files/#{this.file.id}/edit", { _method: 'put', description: this.description }).then (response) =>
+                    this.file.description = response.data.description
+                    $(this.$el).find('.folder_name').show()
+                    $(this.$el).find('.folder_rename_input').hide()
+            updateFile: (e) ->
+                this.$refs.contextMenu.close()
+                this.$http.get("/api/files/modal/#{this.file.id}").then (response) =>
+                    this.$emit 'prepared-file-for-update', response.data
+            showFileInfo: (e) ->
+                this.$emit 'file-clicked', this.file
 </script>

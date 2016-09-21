@@ -52,7 +52,8 @@ class FilesController extends Controller
     {
         $class = $this->model;
         $file = $class::find($id);
-        return view('files.file_webix_update', compact('file'));
+        return response()->json($file);
+//        return view('files.file_webix_update', compact('file'));
     }
 
     public function multiHandle(Request $request)
@@ -133,6 +134,7 @@ class FilesController extends Controller
         if ($fileChanged) {
             return trans('files.file_updated');
         }
+        return response()->json($file);
 //        return view($this->item_view, compact('file'));
 //        return redirect($this->list_page);
     }
@@ -154,6 +156,7 @@ class FilesController extends Controller
     public function getInfo ($id) {
         $model = $this->model;
         $file = $model::find($id);
-        return view('files.info', compact('file'));
+        return response()->json($file);
+//        return view('files.info', compact('file'));
     }
 }

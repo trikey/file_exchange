@@ -31,6 +31,7 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('folders', ['as' => 'admin_folders', 'uses' => 'FoldersController@index']);
     Route::get('/download/folder/{id}', 'FoldersController@downloadAll');
+    Route::get('/download/filebox', 'FoldersController@downloadFileBox');
     Route::get('/files/{id}', 'FilesController@download');
     Route::group(['prefix' => 'api'], function() {
 
@@ -39,14 +40,17 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('/tree', 'FoldersController@getTree');
         Route::get('/{id}', 'FoldersController@viewFolder');
         Route::get('/modal/{id}', 'FoldersController@getModalForUpdate');
+        Route::get('/files/modal/{id}', 'FilesController@getModalForUpdate');
 
 
         Route::delete('folders/{id}', ['as' => 'admin_folders_delete', 'uses' => 'FoldersController@destroy']);
         Route::post('folders/create', ['as' => 'admin_folders_store', 'uses' => 'FoldersController@store']);
         Route::put('folders/{id}/edit', ['as' => 'admin_folders_update', 'uses' => 'FoldersController@update']);
         Route::put('folders/{id}/update', ['as' => 'admin_folders_update_preview_picture', 'uses' => 'FoldersController@updatePreviewPicture']);
+
         Route::post('filebox/{id}', ['as' => 'admin_add_to_file_box', 'uses' => 'FoldersController@addToFileBox']);
         Route::post('filebox/remove/{id}', ['as' => 'admin_remove_from_file_box', 'uses' => 'FoldersController@removeFromFileBox']);
+        Route::get('filebox/index', 'FoldersController@filebox');
 
 
         Route::post('files/multi', ['as' => 'admin_files_multi_post', 'uses' => 'FilesController@multiHandle']);
