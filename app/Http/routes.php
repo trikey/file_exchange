@@ -31,6 +31,7 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('folders', ['as' => 'admin_folders', 'uses' => 'FoldersController@index']);
     Route::get('/download/folder/{id}', 'FoldersController@downloadAll');
+    Route::get('/files/{id}', 'FilesController@download');
     Route::group(['prefix' => 'api'], function() {
 
         Route::get('/', 'FoldersController@main');

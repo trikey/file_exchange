@@ -12,7 +12,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">{{ $t('folders.close') }}</button>
-                <button type="button" class="btn btn-primary select_category" @click="moveFolder($event)">{{ $t('folders.select') }}</button>
+                <button type="button" class="btn btn-primary select_category" @click="move($event)">{{ $t('folders.select') }}</button>
             </div>
         </div>
 
@@ -23,8 +23,8 @@
     Vue = require('vue')
     TreeView = require('./tree_view')
 
-    FoldersTree = Vue.extend
-        props: ['folder', 'foldersTree']
+    module.exports = Vue.extend
+        props: ['folder', 'foldersTree', 'file']
         components:
             'tree-view': TreeView
         data: ->
@@ -33,9 +33,14 @@
             $(this.$el).on 'hidden.bs.modal', =>
                 this.$emit 'hidden-bs-modal'
         methods:
-            moveFolder: (e) ->
-                this.$http.post("/api/folders/#{this.folder.id}/edit", { _method: 'put', parent_id: this.curParentId, is_ajax: 'Y' }).then (response) =>
-                    window.location.reload()
+            move: (e) ->
+                if this.folder == null
+                    this.$http.post("/api/files/#{this.file.id}/edit", { _method: 'put', folder_id: this.curParentId.toString(), is_ajax: 'Y' }).then (response) =>
+                        window.location.reload()
+                else
+                    console.log this.curParentId
+                    this.$http.post("/api/folders/#{this.folder.id}/edit", { _method: 'put', parent_id: this.curParentId.toString(), is_ajax: 'Y' }).then (response) =>
+                        window.location.reload()
             showTree: ->
                 $(this.$el).modal('show')
             nodeSelected: (data) ->
@@ -44,5 +49,4 @@
             foldersTree: ->
                 this.showTree() if this.foldersTree != null
 
-    module.exports = FoldersTree
 </script>

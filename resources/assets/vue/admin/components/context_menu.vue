@@ -9,7 +9,7 @@
 
 <script type="text/coffeescript" lang="coffee">
     Vue = require('vue')
-    FoldersTree = Vue.extend
+    module.exports = Vue.extend
         props: ['id']
         data: ->
             activator: null
@@ -24,6 +24,4 @@
         methods:
             close: ->
                 this.activator.contextmenu('closemenu')
-
-    module.exports = FoldersTree
 </script>

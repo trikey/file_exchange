@@ -19,9 +19,10 @@
 
     <div class="row row-file" id="folders">
         <folder-child v-for="folder in folders" :folder="folder" @folder-added="onFolderAdded" @deleted="onDeleted" @moved="onMoved"></folder-child>
+        <file v-for="file in files" :file="file" @deleted-file="onDeletedFile" @moved-file="onMovedFile"></file>
     </div>
 
-    <folders-tree :folder="selectedFolder" :folders-tree="foldersTree" @hidden-bs-modal="onHiddenBsModal"></folders-tree>
+    <folders-tree :folder="selectedFolder" :file="selectedFile" :folders-tree="foldersTree" @hidden-bs-modal="onHiddenBsModal"></folders-tree>
 
 
     <file-add-popup :parent-id="selectedParentId" @hidden-bs-modal="onHiddenBsModal"></file-add-popup>
@@ -39,6 +40,7 @@
     Breadcrumbs = require('_admin/components/breadcrumbs')
     FileAddPopup = require('_admin/components/file_add_popup')
     MultipleFilesAddPopup = require('_admin/components/multiple_files_add_popup')
+    File = require('_admin/components/file')
 
     module.exports = Vue.extend
         created: ->
@@ -48,6 +50,7 @@
         data: ->
             folders: []
             selectedFolder: null,
+            selectedFile: null,
             selectedFolderForUpdate: null
             foldersTree: null,
             user: {},
@@ -55,7 +58,8 @@
             breadcrumbs: [],
             readyToAddFolder: true,
             selectedParentId: null,
-            selectedParentIdForMultiple: null
+            selectedParentIdForMultiple: null,
+            files: []
         route:
             data: (transition) ->
                 this.getFolderAndFiles(this.$route.params.id)
@@ -65,9 +69,10 @@
             'folder-child': FolderChild
             'folder-update-popup': FolderUpdatePopup
             'admin-menu': AdminMenu
-            'breadcrumbs': Breadcrumbs,
+            'breadcrumbs': Breadcrumbs
             'file-add-popup': FileAddPopup
             'multiple-files-add-popup': MultipleFilesAddPopup
+            'file': File
         methods:
             getUser: ->
                 this.$http.get('api/user').then (response) =>
@@ -84,18 +89,25 @@
             getFolderAndFiles: (folderId) ->
                 this.$http.get("/api/#{folderId}").then (response) =>
                     this.folders = response.data.folders
+                    this.files = response.data.files
                     this.breadcrumbs = response.data.breadcrumbs
-                    for breadcrumb, index in this.breadcrumbs
-                        this.breadcrumbs[index].url = "#!/" + breadcrumb.id #ХЕРЬ
             onDeleted: (folder) ->
                 this.folders.$remove(folder)
+            onDeletedFile: (file) ->
+                this.files.$remove(file)
             onMoved: (folder) ->
                 this.selectedFolder = folder
+                this.$http.get('/api/tree').then (response) =>
+                    this.foldersTree = response.data
+            onMovedFile: (file) ->
+                console.log file
+                this.selectedFile = file
                 this.$http.get('/api/tree').then (response) =>
                     this.foldersTree = response.data
             onHiddenBsModal: ->
                 this.foldersTree = null
                 this.selectedFolder = null
+                this.selectedFile = null
                 this.selectedParentId = null
                 this.selectedParentIdForMultiple = null
             onPreparedForUpdate: (folder) ->

@@ -17,7 +17,8 @@ Vue.locale('en', Locales[lang])
 
 Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('#token').getAttribute('content');
 
-router = new VueRouter()
+router = new VueRouter
+    hashbang: false
 app = Vue.extend({})
 
 router.map(
