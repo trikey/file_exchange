@@ -198,9 +198,11 @@ class FoldersController extends Controller
 
             $files = \App\File::FindFilesByDescription($search)->get();
             $folders = $model::FindFoldersByDescription($search)->get();
-            return view($this->index_view, compact('folders', 'parentFolder', 'breadcrumbs', 'files', 'search'));
+            return response()->json(['folders' => $folders, 'files' => $files, 'breadcrumbs' => $breadcrumbs]);
+//            return view($this->index_view, compact('folders', 'parentFolder', 'breadcrumbs', 'files', 'search'));
         }
-        return view($this->index_view, compact('folders', 'parentFolder', 'breadcrumbs', 'files', 'search'));
+        return response()->json(['folders' => $folders, 'files' => $files, 'breadcrumbs' => $breadcrumbs]);
+//        return view($this->index_view, compact('folders', 'parentFolder', 'breadcrumbs', 'files', 'search'));
 
     }
 

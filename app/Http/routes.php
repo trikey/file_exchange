@@ -38,6 +38,7 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('/', 'FoldersController@main');
         Route::get('/user', 'UsersController@getUser');
         Route::get('/tree', 'FoldersController@getTree');
+        Route::get('/search', 'FoldersController@search');
         Route::get('/{id}', 'FoldersController@viewFolder');
         Route::get('/modal/{id}', 'FoldersController@getModalForUpdate');
         Route::get('/files/modal/{id}', 'FilesController@getModalForUpdate');

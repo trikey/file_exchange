@@ -3,7 +3,6 @@
     <div class="top-line">
         <div class="row">
             <div class="col-sm-6">
-                <searchform></searchform>
                 <br/>
                 <h1>{{ $t('folders.files_and_folders') }}</h1>
             </div>
@@ -26,7 +25,6 @@
 
 <script type="text/coffeescript" lang="coffee">
     Vue = require('vue')
-    SearchForm = require('_admin/components/search_form')
     FoldersTree = require('_admin/components/folders_tree')
     Folder = require('_admin/components/folder')
     FolderUpdatePopup = require('_admin/components/folder_update_popup')
@@ -44,7 +42,6 @@
             breadcrumbs: [],
             user: {}
         components:
-            searchform: SearchForm
             folderstree: FoldersTree
             folder: Folder
             breadcrumbs: Breadcrumbs

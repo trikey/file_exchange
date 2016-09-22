@@ -5,7 +5,7 @@
         <div class="top-line">
             <div class="row">
                 <div class="col-sm-6">
-                    <search-form></search-form>
+                    <search-form @search="onSearch"></search-form>
                     <br/>
                     <h1>{{ $t('folders.files_and_folders') }}</h1>
                 </div>
@@ -124,4 +124,8 @@
                 this.selectedParentIdForMultiple = parentFolderId
             onFileClicked: (file) ->
                 this.selectedFileForInfo = file
+            onSearch: (data) ->
+                this.folders = data.folders
+                this.files = data.files
+                this.breadcrumbs = data.breadcrumbs
 </script>
