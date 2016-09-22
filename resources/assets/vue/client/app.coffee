@@ -1,0 +1,40 @@
+Vue = require('vue')
+VueResource = require('vue-resource')
+VueRouter = require('vue-router')
+VueI18n = require('vue-i18n')
+VueValidator = require('vue-validator')
+
+Locales = require('../vue-i18n-locales.generated')
+
+Vue.use(VueResource)
+Vue.use(VueRouter)
+Vue.use(VueI18n)
+Vue.use(VueValidator)
+
+Vue.use(VueI18n)
+lang = document.querySelector('body').getAttribute('data-lang')
+Vue.locale('en', Locales[lang])
+
+Vue.http.headers.common['X-CSRF-TOKEN'] = document.querySelector('#token').getAttribute('content');
+
+router = new VueRouter
+    hashbang: false
+app = Vue.extend({})
+
+router.map(
+    {
+        '/': {
+            name: 'root',
+            component: require('../admin/pages/root')
+        },
+        '/:id': {
+            name: 'folder',
+            component: require('../admin/pages/folder')
+        },
+        '/filebox': {
+            name: 'filebox',
+            component: require('../admin/pages/filebox')
+        }
+    }
+)
+router.start(app, 'body')

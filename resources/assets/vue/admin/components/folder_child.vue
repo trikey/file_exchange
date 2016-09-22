@@ -8,7 +8,7 @@
             <input type="text" name="name" v-model="name" class="folder_rename_input" v-on:blur="onBlur($event, folder)" v-show="folder.id == undefined" />
         </div>
 
-        <context-menu :id="'folder-context-menu-' + folder.id" v-ref:context-menu v-if="folder.id">
+        <context-menu :id="'folder-context-menu-' + folder.id" v-ref:context-menu v-if="folder.id && (user.isAdmin || user.isModerator)">
             <li><a tabindex="-1" href="#" @click.prevent="deleteFolder($event)">{{ $t('folders.delete') }}</a></li>
             <li><a tabindex="-1" href="#" @click.prevent="moveFolder($event)">{{ $t('folders.move') }}</a></li>
             <li><a tabindex="-1" href="#" @click.prevent="renameFolder($event)">{{ $t('folders.rename') }}</a></li>
@@ -21,7 +21,7 @@
     Vue = require('vue')
     ContextMenu = require('./context_menu')
     FoldersTree = Vue.extend
-        props: ['folder']
+        props: ['folder', 'user']
         data: ->
             name: null
         ready: ->

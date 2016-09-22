@@ -13,7 +13,7 @@
     <breadcrumbs :breadcrumbs="breadcrumbs"></breadcrumbs>
 
     <div class="row" id="folders">
-        <folder v-for="folder in folders" v-show="folder.path" :folder="folder" @deleted="onDeleted" @moved="onMoved" @prepared-for-update="onPreparedForUpdate"></folder>
+        <folder v-for="folder in folders" :user="user" v-show="folder.path" :folder="folder" @deleted="onDeleted" @moved="onMoved" @prepared-for-update="onPreparedForUpdate"></folder>
     </div>
 
     <folderstree :folder="selectedFolder" :folders-tree="foldersTree" @hidden-bs-modal="onHiddenBsModal"></folderstree>
@@ -34,13 +34,15 @@
 
     module.exports = Vue.extend
         created: ->
+            this.getUser()
             this.getRootFolders()
         data: ->
             folders: []
             selectedFolder: null,
             selectedFolderForUpdate: null
             foldersTree: null,
-            breadcrumbs: []
+            breadcrumbs: [],
+            user: {}
         components:
             searchform: SearchForm
             folderstree: FoldersTree
@@ -48,6 +50,9 @@
             breadcrumbs: Breadcrumbs
             'folder-update-popup': FolderUpdatePopup
         methods:
+            getUser: ->
+                this.$http.get('api/user').then (response) =>
+                    this.user = response.data
             getRootFolders: ->
                 this.$http.get('/api').then (response) =>
                     this.folders = response.data

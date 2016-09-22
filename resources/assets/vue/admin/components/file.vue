@@ -9,7 +9,7 @@
         </div>
 
 
-        <context-menu :id="'file-context-menu-' + file.id" v-ref:context-menu v-if="file.id">
+        <context-menu :id="'file-context-menu-' + file.id" v-ref:context-menu v-if="file.id && (user.isAdmin || user.isModerator)">
             <li><a tabindex="-1" href="#" @click.prevent="deleteFile($event)">{{ $t('files.delete') }}</a></li>
             <li><a tabindex="-1" href="#" @click.prevent="moveFile($event)">{{ $t('files.move') }}</a></li>
             <li><a tabindex="-1" href="#" @click.prevent="renameFile($event)">{{ $t('files.rename') }}</a></li>
@@ -22,7 +22,7 @@
     Vue = require('vue')
     ContextMenu = require('./context_menu')
     module.exports = Vue.extend
-        props: ['file']
+        props: ['file', 'user']
         data: ->
             description: null
         ready: ->

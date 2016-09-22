@@ -20,8 +20,8 @@
 
 
         <div class="row row-file" id="folders">
-            <folder-child v-for="folder in folders" :folder="folder" @folder-added="onFolderAdded" @deleted="onDeleted" @moved="onMoved"></folder-child>
-            <file v-for="file in files" :file="file" @file-clicked="onFileClicked" @deleted-file="onDeletedFile" @moved-file="onMovedFile" @prepared-file-for-update="onPreparedForUpdate"></file>
+            <folder-child v-for="folder in folders" :user="user" :folder="folder" @folder-added="onFolderAdded" @deleted="onDeleted" @moved="onMoved"></folder-child>
+            <file v-for="file in files" :user="user" :file="file" @file-clicked="onFileClicked" @deleted-file="onDeletedFile" @moved-file="onMovedFile" @prepared-file-for-update="onPreparedForUpdate"></file>
         </div>
     </div>
     <folders-tree :folder="selectedFolder" :file="selectedFile" :folders-tree="foldersTree" @hidden-bs-modal="onHiddenBsModal"></folders-tree>
