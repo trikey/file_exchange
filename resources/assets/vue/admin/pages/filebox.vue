@@ -9,7 +9,7 @@
                     <h1>{{ $t('menu.basket') }}</h1>
                 </div>
                 <div class="col-sm-6 right-text">
-                    <a href="/download/filebox" class="btn btn-default" v-if="files.length > 0">
+                    <a href="/download_filebox" class="btn btn-default" v-if="files.length > 0">
                         {{ $t('folders.download_all') }}
                     </a>
                 </div>

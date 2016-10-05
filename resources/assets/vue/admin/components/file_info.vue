@@ -19,7 +19,7 @@
             <a class="file-action addbasket add-to-file-box" href="#" v-else @click.prevent="addToFileBox($event)"></a>
         </div>
         <div class="file-action-block-copy-link">
-            <div class="btn btn-primary copy-download-link" data-clipboard-text="http://fileexchange.local/files/{{ file.id }}">{{ $t('files.copy_link') }}</div>
+            <div class="btn btn-primary copy-download-link" data-clipboard-text="https://media.redmond.company/files/{{ file.id }}">{{ $t('files.copy_link') }}</div>
         </div>
     </div>
     </div>
