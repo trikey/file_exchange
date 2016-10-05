@@ -1,5 +1,5 @@
 <template>
-    <a href="/download/folder/{{ parentId }}" target="_blank" class="btn btn-default download-all">
+    <a href="/download/{{ parentId }}" target="_blank" class="btn btn-default download-all">
         {{ $t('folders.download_all') }}
     </a>
     <a href="#" class="btn btn-default add_folder" v-if="(user.isAdmin || user.isModerator) && readyToAddFolder" @click.prevent="addFolder($event)">

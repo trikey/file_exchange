@@ -6,7 +6,7 @@
             <img :src="folder.path" alt=""/>
             <a v-link="{name: 'folder', params: { id: folder.id }}" class="section-link"></a>
             <div class="section-center">
-                <div :class="{ 'section-title': true, 'section-title-white': folder.id == 2 }">
+                <div :class="{ 'section-title': true, 'section-title-white': folder.id == 87 }">
                     <span>{{ folder.name }}</span> ({{ folder.count }})
                 </div>
             </div>
