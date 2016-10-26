@@ -36,7 +36,7 @@ class FoldersController extends Controller
         return response()->json($folders);
     }
 
-    public function viewFolder($id)
+    public function viewFolder(Request $request, $id)
     {
         $model = $this->model;
         $folders = $model::FindChildrenFolders($id)->get();
@@ -45,6 +45,12 @@ class FoldersController extends Controller
         $breadcrumbs = $model::getParent($id, [['id' => $folder->id, 'name' => $folder->name, 'url' => $folder->url]]);
 
         $files = \App\File::FindFilesByFolderId($id)->get();
+        $sort = $request->get('sort');
+        if($sort == 'type')
+        {
+            $files = $files->sortBy(function($file){ return $file->type; })->values();
+        }
+
         return response()->json(['folders' => $folders, 'files' => $files, 'breadcrumbs' => $breadcrumbs]);
 //        return view($this->index_view, compact('folders', 'parentFolder', 'breadcrumbs', 'files'));
     }

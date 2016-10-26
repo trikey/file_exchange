@@ -42,9 +42,9 @@ class File extends BaseModel
         return $this->belongsTo('App\Folder', 'folder_id');
     }
 
-    public function scopeFindFilesByFolderId($query, $folderId)
+    public function scopeFindFilesByFolderId($query, $folderId, $sort = 'description')
     {
-        return $query->where('folder_id', '=', $folderId);
+        return $query->where('folder_id', '=', $folderId)->orderBy($sort, 'asc');
     }
 
 

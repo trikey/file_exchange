@@ -72,9 +72,9 @@ class Folder extends BaseModel
 
     }
 
-    public function scopeFindChildrenFolders($query, $parentId)
+    public function scopeFindChildrenFolders($query, $parentId, $sort = 'name')
     {
-        return $query->where('parent_id', '=', $parentId);
+        return $query->where('parent_id', '=', $parentId)->orderBy($sort, 'asc');
     }
 
     public function scopeFindFoldersByDescription($query, $description)

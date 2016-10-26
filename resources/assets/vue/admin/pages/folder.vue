@@ -7,7 +7,15 @@
                 <div class="col-sm-6">
                     <search-form @search="onSearch"></search-form>
                     <br/>
-                    <h1>{{ $t('folders.files_and_folders') }}</h1>
+                    <h1 class="pull-left">{{ $t('folders.files_and_folders') }}</h1>
+                    <form class="form-inline pull-left" style="margin-left: 40px;">
+                        <div class="form-group">
+                            <label for="sort">Sort By</label>
+                            <select v-model="currentSort" id="sort">
+                                <option v-for="option in sort" :value="option">{{option}}</option>
+                            </select>
+                        </div>
+                    </form>
                 </div>
                 <div class="col-sm-6 right-text">
                     <admin-menu :user="user" :parent-id="parentFolderId" :ready-to-add-folder="readyToAddFolder" @folder-html-added="onFolderHtmlAdded" @file-html-added="onFileHtmlAdded" @multiple-file-html-added="onMultipleFileHtmlAdded"></admin-menu>
@@ -52,6 +60,8 @@
             this.getFolderAndFiles(this.$route.params.id)
             this.breadcrumbs = []
         data: ->
+            sort: ['name', 'type'],
+            currentSort: 'name',
             folders: []
             selectedFolder: null,
             selectedFile: null,
@@ -94,9 +104,10 @@
                 this.readyToAddFolder = true
             getFolderAndFiles: (folderId) ->
                 this.parentFolderId = folderId
-                this.$http.get("/api/#{folderId}").then (response) =>
+                this.$http.get("/api/#{folderId}?sort=#{this.currentSort}").then (response) =>
                     this.folders = response.data.folders
                     this.files = response.data.files
+                    console.log(this.files);
                     this.breadcrumbs = response.data.breadcrumbs
             onDeleted: (folder) ->
                 this.folders.$remove(folder)
@@ -129,4 +140,8 @@
                 this.folders = data.folders
                 this.files = data.files
                 this.breadcrumbs = data.breadcrumbs
+        watch:
+            currentSort: ->
+                this.getFolderAndFiles(this.$route.params.id);
+
 </script>
