@@ -150,7 +150,7 @@ class FilesController extends Controller
     {
         $class = $this->model;
         $object = $class::find($id)->toArray();
-        return response()->download(public_path().$object['path']);
+        return response()->download(public_path().$object['path'], $object['description']);
     }
 
     public function getInfo ($id) {

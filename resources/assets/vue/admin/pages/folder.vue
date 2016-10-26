@@ -93,6 +93,7 @@
                 this.folders.push(folder)
                 this.readyToAddFolder = true
             getFolderAndFiles: (folderId) ->
+                this.parentFolderId = folderId
                 this.$http.get("/api/#{folderId}").then (response) =>
                     this.folders = response.data.folders
                     this.files = response.data.files
