@@ -5,14 +5,14 @@
         <div class="top-line">
             <div class="row">
                 <div class="col-sm-6">
-                    <search-form @search="onSearch"></search-form>
+                    <search-form :sort="currentSort" :is-search="isSearch" @search="onSearch"></search-form>
                     <br/>
                     <h1 class="pull-left">{{ $t('folders.files_and_folders') }}</h1>
                     <form class="form-inline pull-left" style="margin-left: 40px;">
                         <div class="form-group">
-                            <label for="sort">Sort By</label>
+                            <label for="sort">{{ $t('folders.sort_by') }}</label>
                             <select v-model="currentSort" id="sort">
-                                <option v-for="option in sort" :value="option">{{option}}</option>
+                                <option v-for="option in sort" :value="option.value">{{option.text}}</option>
                             </select>
                         </div>
                     </form>
@@ -54,13 +54,17 @@
     FileUpdatePopup = require('_admin/components/file_update_popup')
     FileInfo = require('_admin/components/file_info')
 
+    Locales = require('_admin/../vue-i18n-locales.generated')
+    lang = document.querySelector('body').getAttribute('data-lang')
+
+
     module.exports = Vue.extend
         created: ->
             this.getUser()
             this.getFolderAndFiles(this.$route.params.id)
             this.breadcrumbs = []
         data: ->
-            sort: ['name', 'type'],
+            sort: [{text: Locales[lang].folders.sort_name, value: 'name'}, {text: Locales[lang].folders.sort_type, value: 'type'}],
             currentSort: 'name',
             folders: []
             selectedFolder: null,
@@ -75,6 +79,7 @@
             selectedParentId: null,
             selectedParentIdForMultiple: null,
             files: []
+            isSearch: false
         route:
             data: (transition) ->
                 this.getFolderAndFiles(this.$route.params.id)
@@ -104,6 +109,7 @@
                 this.readyToAddFolder = true
             getFolderAndFiles: (folderId) ->
                 this.parentFolderId = folderId
+                this.isSearch = false
                 this.$http.get("/api/#{folderId}?sort=#{this.currentSort}").then (response) =>
                     this.folders = response.data.folders
                     this.files = response.data.files
@@ -140,8 +146,9 @@
                 this.folders = data.folders
                 this.files = data.files
                 this.breadcrumbs = data.breadcrumbs
+                this.isSearch = true
         watch:
             currentSort: ->
-                this.getFolderAndFiles(this.$route.params.id);
+                this.getFolderAndFiles(this.$route.params.id) if(!this.isSearch)
 
 </script>

@@ -48,9 +48,9 @@ class File extends BaseModel
     }
 
 
-    public function scopeFindFilesByDescription($query, $description)
+    public function scopeFindFilesByDescription($query, $description, $sort = 'description')
     {
-        return $query->where('description', 'like', '%'.$description.'%');
+        return $query->where('description', 'like', '%'.$description.'%')->orderBy($sort, 'asc');
     }
 
     public function getTypeAttribute()

@@ -12,10 +12,14 @@
 <script type="text/coffeescript" lang="coffee">
     Vue = require('vue')
     module.exports = Vue.extend
+        props: ['sort', 'isSearch']
         data: ->
             query: null
         methods:
             onSubmit: ->
-                this.$http.get("/api/search?query=#{this.query}").then (response) =>
+                this.$http.get("/api/search?query=#{this.query}&sort=#{this.sort}").then (response) =>
                     this.$emit 'search', response.data
+        watch:
+            sort: ->
+                this.onSubmit() if(this.isSearch)
 </script>

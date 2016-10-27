@@ -50,7 +50,10 @@ module.exports = {
             "update_preview_picture": "Update",
             "file_is_obligatory_field": "File and Name are obligatory fields",
             "file_update": "Upload an image",
-            "upload_multiple_files": "Upload Multiple Files"
+            "upload_multiple_files": "Upload Multiple Files",
+            'sort_by': 'Sort By',
+            'sort_name': 'Name',
+            'sort_type': 'Type'
         },
         "index": {
             "meta_title": "REDMOND - File Sharing",
@@ -298,7 +301,10 @@ module.exports = {
             "update_preview_picture": "Изменить",
             "file_is_obligatory_field": "Файл и Название являются обязательными полями",
             "file_update": "Загрузить изображение",
-            "upload_multiple_files": "Загрузить несколько файлов"
+            "upload_multiple_files": "Загрузить несколько файлов",
+            'sort_by': 'Сортировать по',
+            'sort_name': 'Имени',
+            'sort_type': 'Типу'
         },
         "index": {
             "meta_title": "REDMOND - Файлообменник для партнеров",

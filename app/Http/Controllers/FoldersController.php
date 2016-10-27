@@ -204,6 +204,11 @@ class FoldersController extends Controller
 
             $files = \App\File::FindFilesByDescription($search)->get();
             $folders = $model::FindFoldersByDescription($search)->get();
+            $sort = $request->get('sort');
+            if($sort == 'type')
+            {
+                $files = $files->sortBy(function($file){ return $file->type; })->values();
+            }
             return response()->json(['folders' => $folders, 'files' => $files, 'breadcrumbs' => $breadcrumbs]);
 //            return view($this->index_view, compact('folders', 'parentFolder', 'breadcrumbs', 'files', 'search'));
         }
