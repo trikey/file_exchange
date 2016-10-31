@@ -46,7 +46,7 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $e)
     {
         if ( $e instanceof \Illuminate\Session\TokenMismatchException ) {
-            return redirect('/login');
+            return redirect('/login')->with('session_error', trans('auth.session_timeout'));
         }
         if($this->isHttpException($e)){
             switch ($e->getStatusCode()) {

@@ -41,6 +41,9 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
+                @if (session('session_error'))
+                    <div class="alert alert-danger" role="alert">{{ session('session_error') }}</div>
+                @endif
                 @yield('content')
             </div>
         </div>
