@@ -4,6 +4,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 use \App\User;
+use \App\Folder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,6 +24,7 @@ class DatabaseSeeder extends Seeder
             'isAdmin' => 1
         ]);
         $user->save();
+        $id = $user->id;
 
         $user = new User([
             'fio' => 'Guest',
@@ -32,6 +34,17 @@ class DatabaseSeeder extends Seeder
             'canAccess' => 1
         ]);
         $user->save();
+
+        DB::table('folders')->delete();
+        DB::table('folders')->insert(
+            [
+                'name' => 'Root Folder',
+                'created_by' => $id,
+                'modified_by' => $id,
+                'path' => '/uploads/jADk-PNS_6E.jpg',
+                'parent_id' => 0,
+            ]
+        );
         // $this->call(UsersTableSeeder::class);
     }
 }
